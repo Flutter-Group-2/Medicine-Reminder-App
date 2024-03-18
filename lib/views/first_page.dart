@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/login_page.dart';
+import 'package:medicine_reminder_app/views/siginup_page.dart';
+import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+class FirstView extends StatelessWidget {
+  const FirstView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       bottomSheet: Container(
         height: 300,
@@ -22,101 +27,70 @@ class FirstPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(300, 60)),
-                    backgroundColor: MaterialStateProperty.all(green),
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 24)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    "تسجيل الدخول",
-                    style: TextStyle(
-                        color: white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                ),
+                CustomElevatedButton(
+                  text: "تسجيل الدخول",
+                  buttonColor: green,
+                  styleColor: white,
+                  onPressed: () {
+                    // ** here is logic ** \\
+                    context.push(view: LoginView(), isPush: false);
+                  },
+                )
               ],
             ),
             height20,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(300, 60)),
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 24)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    "تسجيل الدخول كزائر",
-                    style: TextStyle(
-                        color: black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,fontFamily:'Poppins'),
-                  ),
-                ),
+                CustomElevatedButton(
+                  text: "تسجيل الدخول كزائر",
+                  buttonColor: white,
+                  borderColor: green,
+                  styleColor: black,
+                  onPressed: () {
+                    // ** here is logic ** \\
+                  },
+                )
               ],
             ),
-             height20,
+            height20,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(300, 60)),
-                    backgroundColor: MaterialStateProperty.all(green),
-                    padding: MaterialStateProperty.all(
-                        const EdgeInsets.symmetric(
-                            vertical: 16, horizontal: 24)),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    )),
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    "تسجيل جديد ",
-                    style: TextStyle(
-                        color: white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                ),
+                CustomElevatedButton(
+                  text: "تسجيل جديد",
+                  buttonColor: green,
+                  styleColor: white,
+                  onPressed: () {
+                    // ** here is logic ** \\
+                    context.push(view: SignUpView(), isPush: false);
+                  },
+                )
               ],
             ),
           ],
         ),
       ),
       body: Container(
-          height: double.maxFinite,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [green, green, greenLight],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter),
-          ),
-          child: const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/images/logo3.png"),
-                  radius: 70,
-                ),
+        height: double.maxFinite,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [green, green, greenLight],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
+        ),
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage("assets/images/logo3.png"),
+                radius: 70,
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

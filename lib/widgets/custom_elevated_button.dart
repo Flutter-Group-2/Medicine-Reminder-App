@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medicine_reminder_app/utils/colors.dart';
+
+class CustomElevatedButton extends StatelessWidget {
+  CustomElevatedButton({
+    super.key,
+    required this.buttonColor,
+    required this.text,
+    required this.styleColor,
+    this.onPressed,
+    this.borderColor = Colors.transparent,
+  });
+
+  final Color buttonColor;
+  final Color borderColor ;
+  final Color styleColor;
+  final String text;
+  void Function()? onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        minimumSize: MaterialStateProperty.all(Size(300, 60)),
+        backgroundColor: MaterialStateProperty.all(buttonColor),
+        padding: MaterialStateProperty.all(
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 24)),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(color: borderColor),
+        )),
+      ),
+      onPressed: onPressed,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: TextStyle(
+                color: styleColor, fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ],
+      ),
+    );
+  }
+}

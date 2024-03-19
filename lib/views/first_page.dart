@@ -69,7 +69,7 @@ class FirstView extends StatelessWidget {
           children: [
             Center(
               child: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/logo3.png"),
+                backgroundImage: AssetImage("assets/images/logo_2.png"),
                 radius: 70,
               ),
             ),

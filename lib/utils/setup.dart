@@ -1,3 +1,1 @@
-databaseConfig() {}
-
 setup() {}

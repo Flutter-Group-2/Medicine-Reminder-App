@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medicine_reminder_app/views/first_page.dart';
-import 'package:medicine_reminder_app/views/splash_page.dart';
+import 'package:medicine_reminder_app/views/add_medication_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -13,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: AddMedicationPage(),
     );
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
-import 'package:medicine_reminder_app/views/login_page.dart';
-import 'package:medicine_reminder_app/views/siginup_page.dart';
+import 'package:medicine_reminder_app/views/auth/login_page.dart';
+import 'package:medicine_reminder_app/views/auth/siginup_page.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 
 class FirstView extends StatelessWidget {

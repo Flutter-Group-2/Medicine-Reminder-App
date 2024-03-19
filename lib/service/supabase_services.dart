@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DBService {
@@ -7,15 +9,16 @@ class DBService {
   // ----- Auth ------
 
   //Sign up
-  Future signUp(
-      {required String username,
-      required String email,
-      required String password}) async {
+  Future signUp({required String email, required String password}) async {
     await supabase.auth.signUp(
-      data: {'username': username},
       password: password,
       email: email,
     );
+  }
+
+  //create user
+  Future createUser({required String name, required String email}) async {
+    await supabase.from('profiles').insert({'email': email, 'username': name});
   }
 
   //Login

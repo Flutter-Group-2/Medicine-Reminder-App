@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
-class PellCount extends StatefulWidget {
-  const PellCount({Key? key}) : super(key: key);
+class DurationOfMedication extends StatefulWidget {
+  const DurationOfMedication({Key? key}) : super(key: key);
 
   @override
-  _PellCountState createState() => _PellCountState();
+  _DurationOfMedicationState createState() => _DurationOfMedicationState();
 }
 
-class _PellCountState extends State<PellCount> {
+class _DurationOfMedicationState extends State<DurationOfMedication> {
   int _selectedNumber = 1; // Define default value
 
   @override
@@ -24,13 +23,12 @@ class _PellCountState extends State<PellCount> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-           
-          
+          Icon(Icons.date_range_rounded, color: grey),
           Text("${_selectedNumber ?? "..."}"),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text("حبة"),
+              Text("يوم"),
               DropdownButton<int>(
                 menuMaxHeight: 100,
                 borderRadius: BorderRadius.circular(20),
@@ -42,7 +40,7 @@ class _PellCountState extends State<PellCount> {
                     });
                   }
                 },
-                items: List<DropdownMenuItem<int>>.generate(15, (int index) {
+                items: List<DropdownMenuItem<int>>.generate(40, (int index) {
                   return DropdownMenuItem<int>(
                     value: index + 1,
                     child: Text(''),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:medicine_reminder_app/views/first_page.dart';
+import 'package:medicine_reminder_app/service/database_configuration.dart';
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await databaseConfiguration();
   runApp(const MainApp());
 }
 

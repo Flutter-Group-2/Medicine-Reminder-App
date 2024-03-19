@@ -65,7 +65,7 @@ class SignUpView extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const Align(
+                   Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
                       "الإيميل",
@@ -81,7 +81,7 @@ class SignUpView extends StatelessWidget {
                       //  controller: ,
                       ),
                   height26,
-                  const Align(
+                   Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
                       "كلمة المرور",

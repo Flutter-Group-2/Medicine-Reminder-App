@@ -7,4 +7,5 @@ Color white = const Color(0xffEEEEEE);
 Color red = const Color(0xffFF0000);
 Color background = const Color(0xffF8F8F6);
 Color grey = Colors.grey;
-const Color black = Colors.black;
+Color black = const Color(0xFF000000);
+Color pureWhite = const Color(0xFFFFFFFF);

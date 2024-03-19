@@ -68,7 +68,7 @@ class LoginView extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  const Align(
+                   Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
                       "الإيميل",
@@ -84,7 +84,7 @@ class LoginView extends StatelessWidget {
                       //  controller: ,
                       ),
                   height26,
-                  const Align(
+                   Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
                       "كلمة المرور",
@@ -124,7 +124,7 @@ class LoginView extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       text: 'هل يوجد لديك حساب؟ ',
-                      style: const TextStyle(
+                      style:  TextStyle(
                         color: black,
                         fontSize: 16,
                       ),

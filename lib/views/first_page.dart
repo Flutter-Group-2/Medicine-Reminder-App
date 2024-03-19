@@ -21,39 +21,42 @@ class FirstView extends StatelessWidget {
             color: white,
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-        child: Column(
-          children: [
-            height20,
-            CustomElevatedButton(
-              text: "تسجيل الدخول",
-              buttonColor: green,
-              styleColor: white,
-              onPressed: () {
-                // ** here is logic ** \\
-                context.push(view: LoginView(), isPush: false);
-              },
-            ),
-            height20,
-            CustomElevatedButton(
-              text: "تسجيل الدخول كزائر",
-              buttonColor: white,
-              borderColor: green,
-              styleColor: black,
-              onPressed: () {
-                // ** here is logic ** \\
-              },
-            ),
-            height20,
-            CustomElevatedButton(
-              text: "تسجيل جديد",
-              buttonColor: green,
-              styleColor: white,
-              onPressed: () {
-                // ** here is logic ** \\
-                context.push(view: SignUpView(), isPush: false);
-              },
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              height20,
+              CustomElevatedButton(
+                text: "تسجيل الدخول",
+                buttonColor: green,
+                styleColor: white,
+                onPressed: () {
+                  // ** here is logic ** \\
+                  context.push(view: LoginView(), isPush: false);
+                },
+              ),
+              height20,
+              CustomElevatedButton(
+                text: "تسجيل الدخول كزائر",
+                buttonColor: white,
+                borderColor: green,
+                styleColor: black,
+                onPressed: () {
+                  // ** here is logic ** \\
+                },
+              ),
+              height20,
+              CustomElevatedButton(
+                text: "تسجيل جديد",
+                buttonColor: green,
+                styleColor: white,
+                onPressed: () {
+                  // ** here is logic ** \\
+                  context.push(view: SignUpView(), isPush: false);
+                },
+              ),
+            ],
+          ),
         ),
       ),
       body: Container(

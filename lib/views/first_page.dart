@@ -24,49 +24,34 @@ class FirstView extends StatelessWidget {
         child: Column(
           children: [
             height20,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomElevatedButton(
-                  text: "تسجيل الدخول",
-                  buttonColor: green,
-                  styleColor: white,
-                  onPressed: () {
-                    // ** here is logic ** \\
-                    context.push(view: LoginView(), isPush: false);
-                  },
-                )
-              ],
+            CustomElevatedButton(
+              text: "تسجيل الدخول",
+              buttonColor: green,
+              styleColor: white,
+              onPressed: () {
+                // ** here is logic ** \\
+                context.push(view: LoginView(), isPush: false);
+              },
             ),
             height20,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomElevatedButton(
-                  text: "تسجيل الدخول كزائر",
-                  buttonColor: white,
-                  borderColor: green,
-                  styleColor: black,
-                  onPressed: () {
-                    // ** here is logic ** \\
-                  },
-                )
-              ],
+            CustomElevatedButton(
+              text: "تسجيل الدخول كزائر",
+              buttonColor: white,
+              borderColor: green,
+              styleColor: black,
+              onPressed: () {
+                // ** here is logic ** \\
+              },
             ),
             height20,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomElevatedButton(
-                  text: "تسجيل جديد",
-                  buttonColor: green,
-                  styleColor: white,
-                  onPressed: () {
-                    // ** here is logic ** \\
-                    context.push(view: SignUpView(), isPush: false);
-                  },
-                )
-              ],
+            CustomElevatedButton(
+              text: "تسجيل جديد",
+              buttonColor: green,
+              styleColor: white,
+              onPressed: () {
+                // ** here is logic ** \\
+                context.push(view: SignUpView(), isPush: false);
+              },
             ),
           ],
         ),

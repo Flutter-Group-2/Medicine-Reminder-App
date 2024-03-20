@@ -9,6 +9,7 @@ import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/siginup_page.dart';
+import 'package:medicine_reminder_app/views/reset_password_page.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 
@@ -124,7 +125,10 @@ class LoginView extends StatelessWidget {
                         Align(
                           alignment: Alignment.bottomRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              context.push(
+                                  view: ResetPasswordView(), isPush: false);
+                            },
                             child: Text(
                               "هل نسيت كلمة المرور؟",
                               style: TextStyle(

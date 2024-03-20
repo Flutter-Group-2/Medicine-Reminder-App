@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   flutter_svg: ^2.0.10+1
+  flutter_otp_text_field: ^1.1.0+2
   get_storage:
   get_it: ^7.6.7
   flutter_bloc: ^8.1.4

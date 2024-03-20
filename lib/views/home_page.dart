@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             height20,
-            const Align(
+             Align(
               alignment: Alignment.centerRight,
               child: Text(
                 "أدويتي",

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medicine_reminder_app/utils/colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   CustomElevatedButton({

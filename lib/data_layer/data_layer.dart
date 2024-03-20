@@ -5,6 +5,6 @@ class DataInjection {
   final locator = GetIt.I;
 
   setup() {
-    locator.registerSingleton<section>(section());
+    locator.registerSingleton<DBService>(DBService());
   }
 }

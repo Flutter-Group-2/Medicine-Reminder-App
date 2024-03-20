@@ -9,6 +9,7 @@ import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/siginup_page.dart';
+import 'package:medicine_reminder_app/views/bottom_nav_bar.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 
@@ -26,6 +27,7 @@ class LoginView extends StatelessWidget {
           child: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) {
               if (state is AuthSuccessState) {
+                context.push(view: BottomNav(), isPush: true);
                 context.getMessages(msg: state.msg, color: green);
               } else if (state is AuthErrorState) {
                 context.getMessages(msg: state.msg, color: red);

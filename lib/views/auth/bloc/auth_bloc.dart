@@ -10,7 +10,7 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final serviceLocator = DataInjection().locator.get<section>();
+  final serviceLocator = DataInjection().locator.get<DBService>();
 
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) {});
@@ -32,10 +32,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(AuthSuccessState(msg: "Sign up completed successfully."));
       } on AuthException catch (e) {
+        print(e);
         emit(AuthErrorState(
             msg:
                 "Failed to sign up: ${e.statusCode}. Please check your email and password."));
       } on Exception catch (e) {
+        print(e);
         emit(AuthErrorState(msg: "Error occurred during sign up: $e"));
       }
     } else {

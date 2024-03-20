@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class section {
+class DBService {
   //supabase client
   final supabase = Supabase.instance.client;
 
@@ -18,7 +18,7 @@ class section {
 
   //create user
   Future createUser({required String name, required String email}) async {
-    await supabase.from('profiles').insert({'email': email, 'username': name});
+    await supabase.from('user').insert({'email': email, 'username': name});
   }
 
   //Login

@@ -16,7 +16,8 @@ class AddMedicationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: AppBarArrowBack()),
+      appBar: AppBar(
+          actions: const [AppBarArrowBack()], automaticallyImplyLeading: false),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
         child: Column(
@@ -36,7 +37,6 @@ class AddMedicationPage extends StatelessWidget {
               height: 48,
               width: 319,
               child: TextField(
-                
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
                   hintText: 'أكتب ...',

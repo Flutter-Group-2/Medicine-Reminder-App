@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class DBService {
+class section {
   //supabase client
   final supabase = Supabase.instance.client;
 
@@ -29,5 +29,11 @@ class DBService {
   //Logout
   Future signOut() async {
     supabase.auth.signOut();
+  }
+
+  //get current session
+  Future getCurrentSession() async {
+    final session = supabase.auth.currentSession;
+    return session;
   }
 }

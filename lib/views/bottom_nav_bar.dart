@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
+import 'package:medicine_reminder_app/views/add_medication_page.dart';
 import 'package:medicine_reminder_app/views/home_page.dart';
 
 class BottomNav extends StatefulWidget {
@@ -84,7 +86,7 @@ class _BottomNavState extends State<BottomNav> {
           ),
           child: FloatingActionButton(
             onPressed: () {
-              // Here is Logic
+              context.push(view: AddMedicationPage(), isPush: true);
             },
             backgroundColor: green, 
             child: const Icon(Icons.add, color: Colors.white),

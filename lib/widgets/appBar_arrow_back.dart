@@ -8,23 +8,19 @@ class AppBarArrowBack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      actions: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-                color: white,
-                borderRadius: const BorderRadius.all(Radius.circular(7))),
-            child: IconButton(
-              onPressed: () {
-                // رجوع للصفحه التي قبلها
-              },
-              icon: const Icon(Icons.arrow_forward),
-            ),
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: white,
+            borderRadius: const BorderRadius.all(Radius.circular(7))),
+        child: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_forward),
         ),
-      ],
+      ),
     );
   }
 }

@@ -33,7 +33,7 @@ class LoginView extends StatelessWidget {
             },
             builder: (context, state) {
               if (state is AuthLoadingState) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }

@@ -10,12 +10,13 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final serviceLocator = DataInjection().locator.get<DBService>();
+  final serviceLocator = DataInjection().locator.get<section>();
 
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) {});
     on<SignUpEvent>(signUpNewUser);
     on<LoginEvent>(login);
+    on<CheckSessionAvailability>(getSession);
   }
 
   FutureOr<void> signUpNewUser(
@@ -31,12 +32,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(AuthSuccessState(msg: "Sign up completed successfully."));
       } on AuthException catch (e) {
-        print(e);
         emit(AuthErrorState(
             msg:
                 "Failed to sign up: ${e.statusCode}. Please check your email and password."));
       } on Exception catch (e) {
-        print(e);
         emit(AuthErrorState(msg: "Error occurred during sign up: $e"));
       }
     } else {
@@ -63,5 +62,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthErrorState(
           msg: "Please fill in both email and password fields."));
     }
+  }
+
+  FutureOr<void> getSession(
+      CheckSessionAvailability event, Emitter<AuthState> emit) async {
+    await Future.delayed(Duration(seconds: 2));
+    final sessionData = await serviceLocator.getCurrentSession();
+    emit(SessionAvailabilityState(isAvailable: sessionData));
   }
 }

@@ -8,14 +8,14 @@ import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/widgets/custom_container_medican.dart';
 import 'package:medicine_reminder_app/widgets/custom_header_page.dart';
 
-class HomePageView extends StatelessWidget {
-  const HomePageView({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size(context.getWidth(), context.getHeight() / 5.7),
+        preferredSize: Size(context.getWidth(), context.getHeight() / 5.8),
         child: const HeaderHomePage(),
       ),
       body: Padding(

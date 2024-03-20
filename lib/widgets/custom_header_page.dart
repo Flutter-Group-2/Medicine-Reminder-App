@@ -83,13 +83,13 @@ class HeaderHomePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 10,
-            left: 10,
+            top: 45,
+            left: 20,
             child: Container(
               width: 26,
               height: 26,
               decoration:
-                  BoxDecoration(border: Border.all(color: orang, width: 0.5)),
+                  BoxDecoration(border: Border.all(color: orang, width: 0.8)),
               child: Center(
                   child: Text(
                 "E",

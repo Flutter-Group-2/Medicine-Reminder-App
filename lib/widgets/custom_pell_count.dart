@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
 class PellCount extends StatefulWidget {
@@ -24,8 +25,7 @@ class _PellCountState extends State<PellCount> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-           
-          
+          SvgPicture.asset("assets/icons/pells.svg"),
           Text("${_selectedNumber ?? "..."}"),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

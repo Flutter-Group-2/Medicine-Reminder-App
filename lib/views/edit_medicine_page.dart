@@ -11,13 +11,12 @@ import 'package:medicine_reminder_app/widgets/custom_label.dart';
 import 'package:medicine_reminder_app/widgets/custom_notification.dart';
 import 'package:medicine_reminder_app/widgets/custom_pell_count.dart';
 
-class AddMedicationPage extends StatelessWidget {
-  const AddMedicationPage({super.key});
+class EditMedicineView extends StatelessWidget {
+  const EditMedicineView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
           actions: const [AppBarArrowBack()], automaticallyImplyLeading: false),
       body: Padding(
@@ -28,7 +27,7 @@ class AddMedicationPage extends StatelessWidget {
             Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "إضافة دواء",
+                  "تعديل الدواء",
                   style: GoogleFonts.poppins(
                       fontSize: 28, fontWeight: FontWeight.bold),
                 )),
@@ -36,27 +35,25 @@ class AddMedicationPage extends StatelessWidget {
             const CustomLabel(label: 'إسم الدواء'),
             height10,
             SizedBox(
-              height: 48,
-              width: 319,
-              child: TextField(
-                textDirection: TextDirection.rtl,
-                decoration: InputDecoration(
-                  hintText: 'أكتب ...',
-                  suffixIcon:Padding(
-                    padding: const EdgeInsets.only(right: 15,top: 12,bottom: 18),
-                    child: SvgPicture.asset("assets/icons/drugs.svg"),
+                height: 48,
+                width: 319,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14), color: white),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(right: 20),
+                          child: Text("الزنك",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
+                        ),
+                        SvgPicture.asset("assets/icons/drugs.svg"),
+                      ],
+                    ),
                   ),
-                  hintTextDirection: TextDirection.rtl,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  filled: true,
-                  fillColor: white,
-                  alignLabelWithHint: true,
-                ),
-              ),
-            ),
+                )),
             height48,
             const CustomLabel(
               label: "كم حبة باليوم ومدة الدواء",
@@ -75,11 +72,21 @@ class AddMedicationPage extends StatelessWidget {
             const Notifications(),
             height80,
             CustomElevatedButton(
-              text: "إنهاء",
+              text: "حفظ",
               buttonColor: green,
               styleColor: white,
               onPressed: () {
-                Navigator.pop(context);
+                // ** here is logic ** \\
+              },
+            ),
+            height10,
+            CustomElevatedButton(
+              text: "حذف",
+              buttonColor: pureWhite,
+              styleColor: black,
+              borderColor: green,
+              onPressed: () {
+                // ** here is logic ** \\
               },
             )
           ],

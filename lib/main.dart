@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:medicine_reminder_app/data_layer/data_layer.dart';
-import 'package:medicine_reminder_app/service/database_configuration.dart';
+import 'package:medicine_reminder_app/views/bottom_nav_bar.dart';
+import 'package:medicine_reminder_app/views/first_page.dart';
+import 'package:medicine_reminder_app/views/home_page.dart';
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
 void main() async {
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: BottomNav(),
     );
   }
 }

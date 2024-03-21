@@ -17,7 +17,8 @@ final class AuthErrorState extends AuthState {
   AuthErrorState({required this.msg});
 }
 
-class SessionAvailabilityState extends AuthState {
+final class SessionAvailabilityState extends AuthState {
   final dynamic isAvailable;
   SessionAvailabilityState({required this.isAvailable});
 }
+

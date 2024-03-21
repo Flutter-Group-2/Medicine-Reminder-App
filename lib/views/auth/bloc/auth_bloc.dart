@@ -10,7 +10,7 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final serviceLocator = DataInjection().locator.get<password>();
+  final serviceLocator = DataInjection().locator.get<DBServices>();
 
   AuthBloc() : super(AuthInitial()) {
     on<AuthEvent>((event, emit) {});
@@ -18,6 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<LoginEvent>(login);
     on<CheckSessionAvailability>(getSession);
     on<LogoutEvent>(logout);
+    on<ResendOtpEvent>(resendOtp);
     on<SendOtpEvent>(sendOtp);
     on<ConfirmOtpEvent>(confirmOtp);
     on<ChangePasswordEvent>(updatePassword);
@@ -94,6 +95,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (event.email.trim().isNotEmpty) {
       try {
         await serviceLocator.sendOtp(email: event.email);
+        serviceLocator.email = event.email;
         emit(AuthSuccessState(
             msg:
                 "A password reset OTP has been sent to your email. Please check your inbox."));
@@ -160,6 +162,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthErrorState(
           msg:
               "Passwords do not match. Please make sure your passwords match."));
+    }
+  }
+
+  FutureOr<void> resendOtp(
+      ResendOtpEvent event, Emitter<AuthState> emit) async {
+    try {
+      await serviceLocator.resend();
+      emit(
+          AuthSuccessState(msg: "OTP resent to ${serviceLocator.email}"));
+    } catch (e) {
+      emit(AuthErrorState(msg: "OTP could not be sent..."));
     }
   }
 }

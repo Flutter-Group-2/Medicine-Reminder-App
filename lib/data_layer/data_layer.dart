@@ -5,6 +5,6 @@ class DataInjection {
   final locator = GetIt.I;
 
   setup() {
-    locator.registerSingleton<password>(password());
+    locator.registerSingleton<DBServices>(DBServices());
   }
 }

@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class password {
+class DBServices {
   //supabase client
   final supabase = Supabase.instance.client;
+
+  String email = "";
 
   // ----- Auth ------
 
@@ -56,6 +58,11 @@ class password {
   Future verifyOtp({required String email, required String otpToken}) async {
     await supabase.auth
         .verifyOTP(token: otpToken, type: OtpType.email, email: email);
+  }
+
+  Future resend() async {
+    email = supabase.auth.currentSession!.user.email!;
+    await supabase.auth.resend(type: OtpType.signup, email: email);
   }
 
   //Update user

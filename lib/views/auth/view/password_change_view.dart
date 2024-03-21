@@ -1,87 +1,107 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 
 class ChangePasswordView extends StatelessWidget {
-  const ChangePasswordView({super.key});
+  ChangePasswordView({super.key});
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: green,
-        leading: IconButton(
-            onPressed: () {
-              context.push(view: const LoginView(), isPush: false);
-            },
-            icon: Icon(Icons.arrow_back, color: pureWhite)),
-        title: Text(
-          "الرجوع",
-          style: TextStyle(color: pureWhite),
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "كلمة المرور الجديدة",
-                style: TextStyle(
-                  color: black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            height10,
-            TextAuth(
-              hintText: "كلمة المرور",
-            ),
-            height20,
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                "تأكيد كلمة المرور",
-                style: TextStyle(
-                  color: black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            height10,
-            TextAuth(
-              hintText: "تاكيد كلمة المرور",
-            ),
-            height20,
-            CustomElevatedButton(
-              buttonColor: green,
-              styleColor: white,
-              text: "تابع",
-              onPressed: () {
-                //--TODO: Third Step to Reset Password
-                context.push(view: LoginView(), isPush: true);
-              },
-            ),
-            TextButton(
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthSuccessState) {
+          context.push(view: LoginView(), isPush: true);
+          context.getMessages(msg: state.msg, color: green);
+        } else if (state is AuthErrorState) {
+          context.getMessages(msg: state.msg, color: red);
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            backgroundColor: green,
+            leading: IconButton(
                 onPressed: () {
-                  context.push(view: LoginView(), isPush: true);
+                  context.push(view: const LoginView(), isPush: false);
                 },
-                child: Text(
-                  "الرجوع الى تسجيل الدخول",
-                  style: TextStyle(color: grey),
-                ))
-          ],
-        ),
-      ),
+                icon: Icon(Icons.arrow_back, color: pureWhite)),
+            title: Text(
+              "الرجوع",
+              style: TextStyle(color: pureWhite),
+            ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Text(
+                    "كلمة المرور الجديدة",
+                    style: TextStyle(
+                      color: black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                height10,
+                TextAuth(
+                  controller: newPasswordController,
+                  hintText: "كلمة المرور",
+                ),
+                height20,
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Text(
+                    "تأكيد كلمة المرور",
+                    style: TextStyle(
+                      color: black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                height10,
+                TextAuth(
+                  controller: confirmPasswordController,
+                  hintText: "تاكيد كلمة المرور",
+                ),
+                height20,
+                CustomElevatedButton(
+                  buttonColor: green,
+                  styleColor: white,
+                  text: "تابع",
+                  onPressed: () {
+                    //--TODO: Third Step to Reset Password
+                    context.read<AuthBloc>().add(ChangePasswordEvent(
+                        password: newPasswordController.text,
+                        confirmPassword: confirmPasswordController.text));
+                  },
+                ),
+                TextButton(
+                    onPressed: () {
+                      context.push(view: LoginView(), isPush: true);
+                    },
+                    child: Text(
+                      "الرجوع الى تسجيل الدخول",
+                      style: TextStyle(color: grey),
+                    ))
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -8,3 +8,5 @@ Color red = const Color(0xffFF0000);
 Color background = const Color(0xffF8F8F6);
 Color grey = Colors.grey;
 const Color black = Colors.black;
+Color grayLight = const Color(0xffF8F8F6);
+Color pureWhite = const Color(0xffffffff);

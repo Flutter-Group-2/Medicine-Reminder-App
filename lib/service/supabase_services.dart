@@ -18,7 +18,7 @@ class DBService {
 
   //create user
   Future createUser({required String name, required String email}) async {
-    await supabase.from('profiles').insert({'email': email, 'username': name});
+    await supabase.from('user').insert({'email': email, 'username': name});
   }
 
   //Login
@@ -29,5 +29,11 @@ class DBService {
   //Logout
   Future signOut() async {
     supabase.auth.signOut();
+  }
+
+  //get current session
+  Future getCurrentSession() async {
+    final session = supabase.auth.currentSession;
+    return session;
   }
 }

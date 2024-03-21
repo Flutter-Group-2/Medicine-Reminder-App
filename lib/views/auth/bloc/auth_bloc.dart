@@ -16,6 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEvent>((event, emit) {});
     on<SignUpEvent>(signUpNewUser);
     on<LoginEvent>(login);
+    on<CheckSessionAvailability>(getSession);
   }
 
   FutureOr<void> signUpNewUser(
@@ -63,5 +64,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthErrorState(
           msg: "Please fill in both email and password fields."));
     }
+  }
+
+  FutureOr<void> getSession(
+      CheckSessionAvailability event, Emitter<AuthState> emit) async {
+    await Future.delayed(Duration(seconds: 2));
+    final sessionData = await serviceLocator.getCurrentSession();
+    emit(SessionAvailabilityState(isAvailable: sessionData));
   }
 }

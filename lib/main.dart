@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medicine_reminder_app/data_layer/data_layer.dart';
 import 'package:medicine_reminder_app/service/database_configuration.dart';
+import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
+
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
 void main() async {
@@ -15,9 +18,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+    return BlocProvider(
+      create: (context) => AuthBloc()..add(CheckSessionAvailability()),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+      ),
     );
   }
 }

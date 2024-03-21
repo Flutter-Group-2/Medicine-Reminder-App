@@ -32,6 +32,8 @@ class TextAuth extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
+          textAlign: TextAlign.right,
+          cursorColor: green,
           obscureText: isSecure,
           controller: controller,
           decoration: InputDecoration(

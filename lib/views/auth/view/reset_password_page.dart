@@ -12,7 +12,7 @@ import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 class ResetPasswordView extends StatelessWidget {
   ResetPasswordView({super.key});
 
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +53,7 @@ class ResetPasswordView extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is AuthLoadingState) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -102,7 +102,7 @@ class ResetPasswordView extends StatelessWidget {
                     ),
                     TextButton(
                         onPressed: () {
-                          context.push(view: LoginView(), isPush: true);
+                          context.push(view: const LoginView(), isPush: true);
                         },
                         child: Text(
                           "الرجوع الى تسجيل الدخول",

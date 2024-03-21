@@ -10,8 +10,9 @@ import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 
 class ChangePasswordView extends StatelessWidget {
   ChangePasswordView({super.key});
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {

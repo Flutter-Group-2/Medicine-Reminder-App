@@ -1,12 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
-import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
-import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
-import 'package:medicine_reminder_app/views/auth/view/siginup_page.dart';
 import 'package:medicine_reminder_app/widgets/custom_container_medican.dart';
 import 'package:medicine_reminder_app/widgets/custom_header_page.dart';
 
@@ -24,10 +20,6 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.all(40.0),
         child: Column(
           children: [
-            IconButton(onPressed: () {
-              DBServices().logout();
-              context.push(view: LoginView(), isPush: false);
-            }, icon: Icon(Icons.logout)),
             height20,
             const Align(
               alignment: Alignment.centerRight,

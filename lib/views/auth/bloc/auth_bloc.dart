@@ -39,12 +39,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             msg:
                 "Sign up completed successfully, please confirm your email before signing in."));
       } on AuthException catch (e) {
-        print(e);
         emit(AuthErrorState(
             msg:
                 "Failed to sign up: ${e.statusCode}. Please check your email and password."));
       } on Exception catch (e) {
-        print(e);
         emit(AuthErrorState(msg: "Error occurred during sign up: $e"));
       }
     } else {
@@ -81,7 +79,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> logout(LogoutEvent event, Emitter<AuthState> emit) async {
-    emit(AuthLoadingState());
     try {
       await serviceLocator.logout();
       emit(AuthSuccessState(msg: "Logout successful"));
@@ -100,11 +97,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             msg:
                 "A password reset OTP has been sent to your email. Please check your inbox."));
       } on AuthException catch (e) {
-        print(e);
         emit(AuthErrorState(
             msg: "Invalid email address. Please provide a valid email."));
       } on Exception catch (e) {
-        print(e);
         emit(AuthErrorState(
             msg:
                 "We encountered an issue while processing your request. Please try again later."));
@@ -123,10 +118,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthSuccessState(
             msg: "OTP Confirmed, please enter your new password"));
       } on AuthException catch (e) {
-        print(e);
         emit(AuthErrorState(msg: "Invalid OTP token, please try again"));
       } on Exception catch (e) {
-        print(e);
         emit(AuthErrorState(
             msg: "There's an issue with our servers, please try again later"));
       }
@@ -145,11 +138,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(AuthSuccessState(msg: "Password Successfully changed"));
           await serviceLocator.logout();
         } on AuthException catch (e) {
-          print(e);
           emit(AuthErrorState(
               msg: "You're not authorized to change your password"));
         } on Exception catch (e) {
-          print(e);
           emit(AuthErrorState(
               msg:
                   "There's an issue with our servers, please try again later"));

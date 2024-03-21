@@ -15,12 +15,12 @@ import 'package:timer_button/timer_button.dart';
 class OTPView extends StatelessWidget {
   OTPView({super.key});
 
-  TextEditingController controller1 = TextEditingController();
-  TextEditingController controller2 = TextEditingController();
-  TextEditingController controller3 = TextEditingController();
-  TextEditingController controller4 = TextEditingController();
-  TextEditingController controller5 = TextEditingController();
-  TextEditingController controller6 = TextEditingController();
+  final TextEditingController controller1 = TextEditingController();
+  final TextEditingController controller2 = TextEditingController();
+  final TextEditingController controller3 = TextEditingController();
+  final TextEditingController controller4 = TextEditingController();
+  final TextEditingController controller5 = TextEditingController();
+  final TextEditingController controller6 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

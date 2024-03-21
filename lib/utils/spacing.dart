@@ -34,4 +34,5 @@ const width80 = SizedBox(width: 80);
 const width90 = SizedBox(width: 90);
 const width100 = SizedBox(width: 100);
 const width120 = SizedBox(width: 120);
+const width130 = SizedBox(width: 130);
 const width150 = SizedBox(width: 150);

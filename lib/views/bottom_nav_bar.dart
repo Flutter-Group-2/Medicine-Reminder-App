@@ -4,6 +4,7 @@ import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/views/add_medication_page.dart';
 import 'package:medicine_reminder_app/views/home_page.dart';
+import 'package:medicine_reminder_app/views/medicine_page.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -17,6 +18,7 @@ class _BottomNavState extends State<BottomNav> {
 
   final List<Widget> pages = [
     const HomeView(),
+    const MedicineView(),
     // Add other pages here
   ];
 

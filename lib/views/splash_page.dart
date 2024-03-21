@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
-import 'package:medicine_reminder_app/views/auth/login_page.dart';
+import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/views/bottom_nav_bar.dart';
 
 class SplashScreen extends StatelessWidget {

@@ -19,11 +19,11 @@ class ResetPasswordView extends StatelessWidget {
             onPressed: () {
               context.push(view: const LoginView(), isPush: false);
             },
-            icon: const Icon(Icons.arrow_back)),
-        title: const Text("الرجوع"),
+            icon:  Icon(Icons.arrow_back,color:  pureWhite)),
+        title:  Text("الرجوع", style: TextStyle(color: pureWhite),),
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.arrow_circle_right_outlined))
+              onPressed: () {}, icon: Icon(Icons.arrow_circle_right_outlined, color: pureWhite,))
         ],
       ),
       body: Padding(
@@ -33,6 +33,7 @@ class ResetPasswordView extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
+                height40,
                 CircleAvatar(
                   radius: 100,
                   child: Image.asset(
@@ -56,6 +57,7 @@ class ResetPasswordView extends StatelessWidget {
                 height20,
                 TextAuth(
                     // controller: ,
+                    hintText: "الايميل",
                     ),
                 height20,
                 CustomElevatedButton(
@@ -63,10 +65,18 @@ class ResetPasswordView extends StatelessWidget {
                   styleColor: white,
                   text: "تابع",
                   onPressed: () {
-                    //--TODO:  Here is reset password
-                    context.push(view: const OTPView(), isPush: true);
+                    //--TODO: First Step to Reset Password
+                    context.push(view: OTPView(), isPush: true);
                   },
-                )
+                ),
+                TextButton(
+                    onPressed: () {
+                       context.push(view: LoginView(), isPush: true);
+                    },
+                    child: Text(
+                      "الرجوع الى تسجيل الدخول",
+                      style: TextStyle(color: grey),
+                    ))
               ],
             ),
           ),

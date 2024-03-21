@@ -18,6 +18,7 @@ dependencies:
   supabase_flutter: ^2.3.4
   google_fonts: 6.1.0
   flutter_datetime_picker: ^1.5.1
+  timer_button: ^2.1.1
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class DBService {
+class password {
   //supabase client
   final supabase = Supabase.instance.client;
 
@@ -27,7 +27,7 @@ class DBService {
   }
 
   //Logout
-  Future signOut() async {
+  Future logout() async {
     supabase.auth.signOut();
   }
 
@@ -35,5 +35,31 @@ class DBService {
   Future getCurrentSession() async {
     final session = supabase.auth.currentSession;
     return session;
+  }
+
+  //reset password
+  Future resetPassword({required String email}) async {
+    await supabase.auth.resetPasswordForEmail(
+      email,
+    );
+  }
+
+  //send OTP
+  Future sendOtp({required String email}) async {
+    await supabase.auth.signInWithOtp(
+      email: email,
+      shouldCreateUser: false,
+    );
+  }
+
+  //verify OTP
+  Future verifyOtp({required String email, required String otpToken}) async {
+    await supabase.auth
+        .verifyOTP(token: otpToken, type: OtpType.email, email: email);
+  }
+
+  //Update user
+  Future changePassword({required String password}) async {
+    await supabase.auth.updateUser(UserAttributes(password: password));
   }
 }

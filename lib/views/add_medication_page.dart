@@ -11,7 +11,7 @@ import 'package:medicine_reminder_app/widgets/custom_notification.dart';
 import 'package:medicine_reminder_app/widgets/custom_pell_count.dart';
 
 class AddMedicationPage extends StatelessWidget {
-  const AddMedicationPage({super.key});
+  AddMedicationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

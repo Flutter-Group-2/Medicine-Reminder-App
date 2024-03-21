@@ -15,7 +15,7 @@ import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();

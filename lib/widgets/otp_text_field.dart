@@ -12,7 +12,7 @@ class TextFieldOTP extends StatelessWidget {
 
   final bool first;
   final bool last;
-  TextEditingController controller;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {

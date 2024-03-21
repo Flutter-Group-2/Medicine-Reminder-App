@@ -151,8 +151,6 @@ class OTPView extends StatelessWidget {
                             controller4.text +
                             controller5.text +
                             controller6.text;
-                          print(otpToken);
-                          print(serviceLocator.email);
                         context.read<AuthBloc>().add(ConfirmOtpEvent(
                             email: serviceLocator.email, otpToken: otpToken));
                       },

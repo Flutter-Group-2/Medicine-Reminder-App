@@ -18,7 +18,7 @@ class ChangePasswordView extends StatelessWidget {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccessState) {
-          context.push(view: LoginView(), isPush: true);
+          context.push(view: const LoginView(), isPush: true);
           context.getMessages(msg: state.msg, color: green);
         } else if (state is AuthErrorState) {
           context.getMessages(msg: state.msg, color: red);
@@ -44,7 +44,7 @@ class ChangePasswordView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Align(
+                const Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
                     "كلمة المرور الجديدة",
@@ -61,7 +61,7 @@ class ChangePasswordView extends StatelessWidget {
                   hintText: "كلمة المرور",
                 ),
                 height20,
-                Align(
+                const Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
                     "تأكيد كلمة المرور",
@@ -83,7 +83,6 @@ class ChangePasswordView extends StatelessWidget {
                   styleColor: white,
                   text: "تابع",
                   onPressed: () {
-                    //--TODO: Third Step to Reset Password
                     context.read<AuthBloc>().add(ChangePasswordEvent(
                         password: newPasswordController.text,
                         confirmPassword: confirmPasswordController.text));
@@ -91,7 +90,7 @@ class ChangePasswordView extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      context.push(view: LoginView(), isPush: true);
+                      context.push(view: const LoginView(), isPush: true);
                     },
                     child: Text(
                       "الرجوع الى تسجيل الدخول",

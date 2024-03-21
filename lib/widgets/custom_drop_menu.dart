@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
@@ -15,8 +16,6 @@ class _DropMenuState extends State<DropMenu> {
   int _selectedNumberDay = 1;
   int CountPill = 15;
   int CountDay = 30;
-  String pillName = "حبة";
-  String dayName = "يوم";
 
   @override
   Widget build(BuildContext context) {
@@ -36,33 +35,49 @@ class _DropMenuState extends State<DropMenu> {
               children: [
                 SvgPicture.asset("assets/icons/pells.svg"),
                 Text("$_selectedNumberPill"),
-                Text(pillName),
-                PopupMenuButton<int>(
+                DropdownButton<int>(
+                  
+                  menuMaxHeight: 100,
+                  dropdownColor: pureWhite,
+                  borderRadius: BorderRadius.circular(20),
                   icon: Icon(Icons.arrow_drop_down),
-                  itemBuilder: (BuildContext context) {
-                    return List<PopupMenuEntry<int>>.generate(CountPill,
-                        (int index) {
-                      return PopupMenuItem<int>(
+                  //value: _selectedNumberPill,
+                  hint: Text("حبة"),
+                  onChanged: (int? newValue) {
+                    if (newValue != null) {
+                      setState(() {
+                        _selectedNumberPill = newValue;
+                      });
+                    }
+                  },
+                  items: List<DropdownMenuItem<int>>.generate(
+                    CountPill,
+                    (int index) {
+                      return DropdownMenuItem<int>(
                         value: index + 1,
-                        child: Row(
-                          children: [
-                            Text('${index + 1}', textAlign: TextAlign.center),
-                          ],
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color:greenLight),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('${index+1}', textAlign: TextAlign.center),
+                            ],
+                          ),
                         ),
                       );
-                    });
-                  },
-                  onSelected: (int value) {
-                    setState(() {
-                      _selectedNumberPill = value;
-                    });
-                  },
+                    },
+                  ),
                 ),
               ],
             ),
           ),
         ),
-        SizedBox(width: 20,),
+        SizedBox(
+          width: 20,
+        ),
         Container(
           width: 151,
           height: 48,
@@ -77,27 +92,41 @@ class _DropMenuState extends State<DropMenu> {
               children: [
                 Icon(Icons.date_range_rounded, color: grey),
                 Text("$_selectedNumberDay"),
-                Text(dayName),
-                PopupMenuButton<int>(
+                DropdownButton<int>(
+                  menuMaxHeight: 100,
+                  dropdownColor: pureWhite,
+                  borderRadius: BorderRadius.circular(20),
+
                   icon: Icon(Icons.arrow_drop_down),
-                  itemBuilder: (BuildContext context) {
-                    return List<PopupMenuEntry<int>>.generate(CountDay,
-                        (int index) {
-                      return PopupMenuItem<int>(
+                  // value: _selectedNumberDay,
+                  hint: Text("يوم"),
+                  onChanged: (int? newValue) {
+                    if (newValue != null) {
+                      setState(() {
+                        _selectedNumberDay = newValue;
+                      });
+                    }
+                  },
+                  items: List<DropdownMenuItem<int>>.generate(
+                    CountDay,
+                    (int index) {
+                      return DropdownMenuItem<int>(
                         value: index + 1,
-                        child: Row(
-                          children: [
-                            Text('${index + 1}', textAlign: TextAlign.center),
-                          ],
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color:greenLight),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('${index + 1}', textAlign: TextAlign.center),
+                            ],
+                          ),
                         ),
                       );
-                    });
-                  },
-                  onSelected: (int value) {
-                    setState(() {
-                      _selectedNumberDay = value;
-                    });
-                  },
+                    },
+                  ),
                 ),
               ],
             ),

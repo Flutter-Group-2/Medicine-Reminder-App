@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medicine_reminder_app/data_layer/data_layer.dart';
 import 'package:medicine_reminder_app/service/database_configuration.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
-
+import 'package:medicine_reminder_app/views/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:medicine_reminder_app/views/bottom_nav_bar/bloc/nav_bar_bloc.dart';
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
 void main() async {
@@ -18,11 +19,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc()..add(CheckSessionAvailability()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc()..add(CheckSessionAvailability()),
+        ),
+        BlocProvider(
+          create: (context) => NavBarBloc(),
+        ),
+      ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: BottomNav(),
       ),
     );
   }

@@ -1,9 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
-import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/widgets/custom_container_medican.dart';

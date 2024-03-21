@@ -5,11 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/widgets/appBar_arrow_back.dart';
-import 'package:medicine_reminder_app/widgets/duration_of_medication.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 import 'package:medicine_reminder_app/widgets/custom_label.dart';
 import 'package:medicine_reminder_app/widgets/custom_notification.dart';
-import 'package:medicine_reminder_app/widgets/custom_pell_count.dart';
+import 'package:medicine_reminder_app/widgets/custom_drop_menu.dart';
 
 class AddMedicationPage extends StatelessWidget {
   const AddMedicationPage({super.key});
@@ -65,8 +64,7 @@ class AddMedicationPage extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                PellCount(),
-                DurationOfMedication(),
+                DropMenu(),
               ],
             ),
             height56,

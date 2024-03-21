@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medicine_reminder_app/data_layer/data_layer.dart';
 import 'package:medicine_reminder_app/service/database_configuration.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
+import 'package:medicine_reminder_app/views/edit_medicine_page.dart';
 
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
       create: (context) => AuthBloc()..add(CheckSessionAvailability()),
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: EditMedicineView(),
       ),
     );
   }

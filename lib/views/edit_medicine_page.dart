@@ -5,11 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/widgets/appBar_arrow_back.dart';
-import 'package:medicine_reminder_app/widgets/duration_of_medication.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 import 'package:medicine_reminder_app/widgets/custom_label.dart';
 import 'package:medicine_reminder_app/widgets/custom_notification.dart';
-import 'package:medicine_reminder_app/widgets/custom_pell_count.dart';
+import 'package:medicine_reminder_app/widgets/custom_drop_menu.dart';
 
 class EditMedicineView extends StatelessWidget {
   const EditMedicineView({super.key});
@@ -47,7 +46,11 @@ class EditMedicineView extends StatelessWidget {
                       children: [
                         const Padding(
                           padding: EdgeInsets.only(right: 20),
-                          child: Text("الزنك",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
+                          child: Text(
+                            "الزنك",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500),
+                          ),
                         ),
                         SvgPicture.asset("assets/icons/drugs.svg"),
                       ],
@@ -62,8 +65,7 @@ class EditMedicineView extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                PellCount(),
-                DurationOfMedication(),
+                DropMenu(),
               ],
             ),
             height56,

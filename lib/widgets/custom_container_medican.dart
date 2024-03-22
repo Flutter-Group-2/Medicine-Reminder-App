@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
+import 'package:medicine_reminder_app/model/medicine_model.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/edit_medicine_page.dart';
 
 class ContainerMedication extends StatelessWidget {
   ContainerMedication(
-      {super.key, this.isShowState = false, this.isEditState = false});
+      {super.key, this.isShowState = false, this.isEditState = false,required this.medicine});
 
   final bool isShowState;
   final bool isEditState;
-
+final MedicineModel medicine;
   @override
   Widget build(BuildContext context) {
     return isShowState
         ? Container(
             width: context.getWidth(),
-            height: context.getHeight() / 10.7,
+            height: context.getHeight() / 9,
             alignment: Alignment.centerRight,
             margin: const EdgeInsets.symmetric(vertical: 10),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
@@ -42,7 +44,7 @@ class ContainerMedication extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "الزنك", // Medicine Name
+                      medicine.name!, // Medicine Name
                       style: TextStyle(
                           fontSize: 15,
                           color: black,
@@ -51,7 +53,7 @@ class ContainerMedication extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "ص", // Time zone
+                          medicine.getTimeWithAmPm(medicine.time!), // Time zone
                           style: TextStyle(
                             fontSize: 15,
                             color: Color(0xff504E4E),
@@ -59,17 +61,6 @@ class ContainerMedication extends StatelessWidget {
                           ),
                         ),
                         width4,
-                        SizedBox(
-                          width: 60,
-                          child: Text(
-                            "5:30", // Medicine time
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Color(0xff504E4E),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ],
@@ -80,7 +71,7 @@ class ContainerMedication extends StatelessWidget {
           )
         : Container(
             width: context.getWidth(),
-            height: context.getHeight() / 10.7,
+            height: context.getHeight() / 9,
             alignment: Alignment.centerRight,
             margin: const EdgeInsets.symmetric(vertical: 10),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
@@ -91,13 +82,15 @@ class ContainerMedication extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                   Image.asset('assets/images/edit.png'),
+                   InkWell(onTap:(){
+                    context.push(view:EditMedicineView(medicine: medicine) , isPush: true);
+                   },child: Image.asset('assets/images/edit.png')),
                 width120,
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "الزنك",
+                      medicine.name!,
                       style: TextStyle(
                           fontSize: 15,
                           color: black,
@@ -123,7 +116,7 @@ class ContainerMedication extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "ص",
+                          medicine.getTimeWithAmPm(medicine.time!),
                           style: TextStyle(
                             fontSize: 15,
                             color: Color(0xff504E4E),
@@ -131,17 +124,6 @@ class ContainerMedication extends StatelessWidget {
                           ),
                         ),
                         width4,
-                        SizedBox(
-                          width: 60,
-                          child: Text(
-                            "5:30",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Color(0xff504E4E),
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ],

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
 class DropMenu extends StatefulWidget {
@@ -47,6 +49,7 @@ class _DropMenuState extends State<DropMenu> {
                     if (newValue != null) {
                       setState(() {
                         _selectedNumberPill = newValue;
+                        GetIt.I.get<DBServices>().pellCount=newValue;
                       });
                     }
                   },
@@ -104,6 +107,8 @@ class _DropMenuState extends State<DropMenu> {
                     if (newValue != null) {
                       setState(() {
                         _selectedNumberDay = newValue;
+                      GetIt.I.get<DBServices>().pellPireod=newValue;
+
                       });
                     }
                   },

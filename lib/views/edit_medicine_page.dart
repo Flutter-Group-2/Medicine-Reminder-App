@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/widgets/appBar_arrow_back.dart';
@@ -27,7 +26,7 @@ class EditMedicineView extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "تعديل الدواء",
-                  style: GoogleFonts.poppins(
+                  style: TextStyle(
                       fontSize: 28, fontWeight: FontWeight.bold),
                 )),
             height40,

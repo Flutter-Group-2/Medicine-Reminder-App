@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomLabel extends StatelessWidget {
   const CustomLabel({
@@ -15,7 +14,7 @@ class CustomLabel extends StatelessWidget {
         child: Text(
           label,
           style:
-              GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.normal),
+              TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
         ));
   }
 }

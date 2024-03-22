@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medicine_reminder_app/model/medicine_model.dart';
+import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/widgets/appBar_arrow_back.dart';
@@ -15,6 +18,8 @@ class AddMedicationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locator=GetIt.I.get<DBServices>();
+    TextEditingController pellName = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -38,6 +43,7 @@ class AddMedicationPage extends StatelessWidget {
               height: 48,
               width: 319,
               child: TextField(
+                controller: pellName,
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
                   hintText: 'أكتب ...',
@@ -76,7 +82,16 @@ class AddMedicationPage extends StatelessWidget {
               text: "إنهاء",
               buttonColor: green,
               styleColor: white,
-              onPressed: () {
+              onPressed: () async{
+                final userId = await locator.getCurrentUserId();
+                print(locator.time.runtimeType);
+                print(locator.time);
+
+                print(locator.time.hour);
+                print(locator.time.minute);
+                MedicineModel newMedicine= MedicineModel(count: locator.pellCount,name: pellName.text,period: locator.pellPireod,time:locator.time.toString(),userId:userId);
+
+                await locator.insertMediationData(newMedicine);
                 Navigator.pop(context);
               },
             )

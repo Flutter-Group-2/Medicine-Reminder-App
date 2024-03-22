@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:medicine_reminder_app/views/add_medication_page.dart';
 import 'package:medicine_reminder_app/views/home_page.dart';
 import 'package:medicine_reminder_app/views/medicine_page.dart';
+import 'package:medicine_reminder_app/views/qr_barcode/scan_code_page.dart';
 import 'package:meta/meta.dart';
 
 part 'nav_bar_event.dart';
@@ -16,7 +17,7 @@ class NavBarBloc extends Bloc<NavBarEvent, NavBarState> {
     MedicineView(),
     AddMedicationPage(),
     HomeView(),
-    HomeView()
+    ScanView()
   ];
 
   int selectIndex = 0;

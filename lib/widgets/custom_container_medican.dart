@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/edit_medicine_page.dart';
 
 class ContainerMedication extends StatelessWidget {
   ContainerMedication(
@@ -38,7 +39,7 @@ class ContainerMedication extends StatelessWidget {
                       BoxDecoration(shape: BoxShape.circle, color: green),
                 ),
                 width80,
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -91,9 +92,11 @@ class ContainerMedication extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                   Image.asset('assets/images/edit.png'),
+                   InkWell(onTap: () {
+                     context.push(view: EditMedicineView(), isPush: true);
+                   },child: Image.asset('assets/images/edit.png')),
                 width120,
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(

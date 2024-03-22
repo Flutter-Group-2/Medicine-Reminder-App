@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:medicine_reminder_app/model/medicine_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DBServices {
@@ -68,5 +69,28 @@ class DBServices {
   //Update user
   Future changePassword({required String password}) async {
     await supabase.auth.updateUser(UserAttributes(password: password));
+  }
+
+  //get all Medicine
+  Future<List<MedicineModel>> getAllMedicine() async {
+    final medicineListData = await supabase
+        .from('mediction')
+        .select('*')
+        .match({'user_id': supabase.auth.currentUser!.id});
+    List<MedicineModel> mediction = [];
+    for (var element in medicineListData) {
+      mediction.add(MedicineModel.fromJson(element));
+    }
+    return mediction;
+  }
+
+  //update medicine
+  Future updateResume({required MedicineModel medicine}) async {
+    await supabase.from('mediction').update({
+      "name": medicine.name,
+      "piriod": medicine.period,
+      "count": medicine.count,
+      "time": medicine.time,
+    }).match({'user_id': supabase.auth.currentUser!.id});
   }
 }

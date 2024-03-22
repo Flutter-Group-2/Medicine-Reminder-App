@@ -37,16 +37,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(AuthSuccessState(
             msg:
-                "Sign up completed successfully, please confirm your email before signing in."));
+                "تم إكمال عملية التسجيل بنجاح، يرجى تأكيد بريدك الإلكتروني قبل تسجيل الدخول."));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:
-                "Failed to sign up: ${e.statusCode}. Please check your email and password."));
+                "فشل في عملية التسجيل: ${e.statusCode}. يرجى التحقق من بريدك الإلكتروني وكلمة المرور."));
       } on Exception catch (e) {
-        emit(AuthErrorState(msg: "Error occurred during sign up: $e"));
+        emit(AuthErrorState(msg: "حدث خطأ أثناء عملية التسجيل: $e"));
       }
     } else {
-      emit(AuthErrorState(msg: "Please fill in all the required fields."));
+      emit(AuthErrorState(msg: "يرجى ملء جميع الحقول المطلوبة."));
     }
   }
 
@@ -57,17 +57,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await serviceLocator.login(
             email: event.email, password: event.password);
 
-        emit(AuthSuccessState(msg: "Login successful."));
+        emit(AuthSuccessState(msg: "تم تسجيل الدخول بنجاح."));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:
-                "Incorrect email/password: ${e.statusCode}. Please verify your credentials and try again."));
+                "البريد الإلكتروني أو كلمة المرور غير صحيحة: ${e.statusCode}. يرجى التحقق من بيانات الاعتماد الخاصة بك والمحاولة مرة أخرى."));
       } on Exception catch (e) {
-        emit(AuthErrorState(msg: "An error occurred during login: $e"));
+        emit(AuthErrorState(msg: "حدث خطأ أثناء عملية تسجيل الدخول: $e"));
       }
     } else {
       emit(AuthErrorState(
-          msg: "Please fill in both email and password fields."));
+          msg: "يرجى ملء كل من حقل البريد الإلكتروني وكلمة المرور."));
     }
   }
 
@@ -81,9 +81,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> logout(LogoutEvent event, Emitter<AuthState> emit) async {
     try {
       await serviceLocator.logout();
-      emit(AuthSuccessState(msg: "Logout successful"));
+      emit(AuthSuccessState(msg: "تم تسجيل الخروج بنجاح"));
     } catch (e) {
-      emit(AuthErrorState(msg: "An error occurred during logout"));
+      emit(AuthErrorState(msg: "حدث خطأ أثناء عملية تسجيل الخروج"));
     }
   }
 
@@ -95,17 +95,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         serviceLocator.email = event.email;
         emit(AuthSuccessState(
             msg:
-                "A password reset OTP has been sent to your email. Please check your inbox."));
+                "تم إرسال رمز OTP لإعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك."));
       } on AuthException catch (e) {
         emit(AuthErrorState(
-            msg: "Invalid email address. Please provide a valid email."));
+            msg:
+                "عنوان البريد الإلكتروني غير صالح. يرجى تقديم عنوان بريد إلكتروني صالح."));
       } on Exception catch (e) {
         emit(AuthErrorState(
             msg:
-                "We encountered an issue while processing your request. Please try again later."));
+                "واجهنا مشكلة أثناء معالجة طلبك. يرجى المحاولة مرة أخرى في وقت لاحق."));
       }
     } else {
-      emit(AuthErrorState(msg: "Please provide your email address."));
+      emit(AuthErrorState(msg: "يرجى تقديم عنوان بريدك الإلكتروني."));
     }
   }
 
@@ -116,15 +117,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await serviceLocator.verifyOtp(
             email: event.email, otpToken: event.otpToken);
         emit(AuthSuccessState(
-            msg: "OTP Confirmed, please enter your new password"));
+            msg: "تم تأكيد رمز OTP، يرجى إدخال كلمة المرور الجديدة"));
       } on AuthException catch (e) {
-        emit(AuthErrorState(msg: "Invalid OTP token, please try again"));
+        emit(AuthErrorState(msg: "رمز OTP غير صالح، يرجى المحاولة مرة أخرى"));
       } on Exception catch (e) {
         emit(AuthErrorState(
-            msg: "There's an issue with our servers, please try again later"));
+            msg: "هناك مشكلة في خوادمنا، يرجى المحاولة مرة أخرى في وقت لاحق"));
       }
     } else {
-      emit(AuthErrorState(msg: "Please enter OTP"));
+      emit(AuthErrorState(msg: "يرجى إدخال رمز OTP"));
     }
   }
 
@@ -135,24 +136,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (event.password.trim().isNotEmpty && event.password.length >= 6) {
         try {
           await serviceLocator.changePassword(password: event.password);
-          emit(AuthSuccessState(msg: "Password Successfully changed"));
+          emit(AuthSuccessState(msg: "تم تغيير كلمة المرور بنجاح"));
           await serviceLocator.logout();
         } on AuthException catch (e) {
-          emit(AuthErrorState(
-              msg: "You're not authorized to change your password"));
+          emit(AuthErrorState(msg: "غير مسموح لك بتغيير كلمة المرور"));
         } on Exception catch (e) {
           emit(AuthErrorState(
               msg:
-                  "There's an issue with our servers, please try again later"));
+                  "هناك مشكلة في خوادمنا، يرجى المحاولة مرة أخرى في وقت لاحق"));
         }
       } else {
         emit(AuthErrorState(
-            msg: "Please input your password (6 characters or more)"));
+            msg: "الرجاء إدخال كلمة مرور صالحة (6 أحرف على الأقل)"));
       }
     } else {
       emit(AuthErrorState(
-          msg:
-              "Passwords do not match. Please make sure your passwords match."));
+          msg: "كلمات المرور غير متطابقة. يرجى التأكد من تطابق كلمات المرور."));
     }
   }
 
@@ -160,10 +159,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ResendOtpEvent event, Emitter<AuthState> emit) async {
     try {
       await serviceLocator.resend();
-      emit(
-          AuthSuccessState(msg: "OTP resent to ${serviceLocator.email}"));
+      emit(AuthSuccessState(
+          msg: "تم إعادة إرسال رمز OTP إلى ${serviceLocator.email}"));
     } catch (e) {
-      emit(AuthErrorState(msg: "OTP could not be sent..."));
+      emit(AuthErrorState(msg: "تعذر إرسال رمز OTP..."));
     }
   }
 }

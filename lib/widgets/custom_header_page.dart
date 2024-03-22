@@ -46,17 +46,19 @@ class HeaderHomePage extends StatelessWidget {
                 ),
                 child: Center(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       height16,
                       Image.asset(
-                        'assets/images/logo.png',
+                        'assets/images/header_logo.jpg',
                         width: 83,
-                        height: 87,
+                        height: 80,
                       ),
                       Text(
                         'ساعد',
                         style: TextStyle(
-                            fontSize: 25,
+                             fontFamily: 'Cairo',
+                            fontSize: 30,
                             color: green,
                             fontWeight: FontWeight.bold),
                       )
@@ -67,14 +69,15 @@ class HeaderHomePage extends StatelessWidget {
             ),
             Positioned(
               right: 0,
-              bottom: 20,
+              bottom: 0,
               child: SizedBox(
                 width: 100,
-                height: 100,
+                height: 120,
                 child: Text(
                   "مرحبا \nسارة ",
                   style: TextStyle(
-                      fontSize: 30,
+                      fontFamily: 'MarkaziText',
+                      fontSize: 40,
                       color: pureWhite,
                       fontWeight: FontWeight.w700),
                 ),
@@ -96,19 +99,17 @@ class HeaderHomePage extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 45,
-              left: 20,
+              top: 20,
+              left: 7,
               child: Container(
                 width: 26,
-                height: 26,
-                decoration:
-                    BoxDecoration(border: Border.all(color: orang, width: 0.8)),
+                height: 26,                
                 child: Center(
                   child: IconButton(
                       onPressed: () {
                         context.read<AuthBloc>().add(LogoutEvent());
                       },
-                      icon: Icon(Icons.logout)),
+                      icon: Icon(Icons.logout, color: white,)),
                 ),
               ),
             )

@@ -37,7 +37,8 @@ class ChangePasswordView extends StatelessWidget {
                 icon: Icon(Icons.arrow_back, color: pureWhite)),
             title: Text(
               "الرجوع",
-              style: TextStyle(color: pureWhite),
+              style: TextStyle(color: pureWhite, fontFamily: 'MarkaziText',
+              ),
             ),
           ),
           body: Padding(
@@ -50,6 +51,7 @@ class ChangePasswordView extends StatelessWidget {
                   child: Text(
                     "كلمة المرور الجديدة",
                     style: TextStyle(
+                      fontFamily: 'MarkaziText',
                       color: black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -67,6 +69,7 @@ class ChangePasswordView extends StatelessWidget {
                   child: Text(
                     "تأكيد كلمة المرور",
                     style: TextStyle(
+                      fontFamily: 'MarkaziText',
                       color: black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -95,7 +98,8 @@ class ChangePasswordView extends StatelessWidget {
                     },
                     child: Text(
                       "الرجوع الى تسجيل الدخول",
-                      style: TextStyle(color: grey),
+                      style: TextStyle(color: grey, fontFamily: 'MarkaziText',
+                      ),
                     ))
               ],
             ),

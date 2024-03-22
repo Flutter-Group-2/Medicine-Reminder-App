@@ -28,6 +28,7 @@ class AddMedicationPage extends StatelessWidget {
                 child: Text(
                   "إضافة دواء",
                   style: TextStyle(
+                    fontFamily: 'MarkaziText',
                       fontSize: 28, fontWeight: FontWeight.bold),
                 )),
             height40,

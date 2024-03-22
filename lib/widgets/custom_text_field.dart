@@ -32,6 +32,9 @@ class TextAuth extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
+          style: TextStyle(
+            fontFamily: 'NotoSansArabic',
+          ),
           textAlign: TextAlign.right,
           cursorColor: green,
           obscureText: isSecure,

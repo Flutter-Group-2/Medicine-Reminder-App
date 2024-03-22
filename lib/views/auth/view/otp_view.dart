@@ -52,7 +52,8 @@ class OTPView extends StatelessWidget {
                 icon: Icon(Icons.arrow_back, color: pureWhite)),
             title: Text(
               "الرجوع",
-              style: TextStyle(color: pureWhite),
+              style: TextStyle(color: pureWhite, fontFamily: 'MarkaziText',
+              ),
             ),
           ),
           body: Padding(
@@ -88,6 +89,7 @@ class OTPView extends StatelessWidget {
                             "تم إرسال رمز التحقق إلى بريدك الإلكتروني لاستعادة كلمة المرور. يرجى التحقق من بريدك الإلكتروني واتباع التعليمات لإكمال عملية استعادة كلمة المرور",
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                fontFamily: 'MarkaziText',
                                 color: black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15),
@@ -128,7 +130,7 @@ class OTPView extends StatelessWidget {
                                   onPressed: () {}, // Ignore this pressed
                                   child: Text(
                                     "أعد إرسال رمز التحقق بعد: ${timeLeft + 1}",
-                                    style: TextStyle(color: green),
+                                    style: TextStyle(color: green,),
                                   ),
                                 );
                               },
@@ -161,7 +163,8 @@ class OTPView extends StatelessWidget {
                         },
                         child: Text(
                           "الرجوع الى تسجيل الدخول",
-                          style: TextStyle(color: grey),
+                          style: TextStyle(color: grey, fontFamily: 'MarkaziText',
+                          ),
                         ))
                   ],
                 ),

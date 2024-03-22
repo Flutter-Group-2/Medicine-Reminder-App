@@ -34,7 +34,9 @@ class _DropMenuState extends State<DropMenu> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SvgPicture.asset("assets/icons/pells.svg"),
-                Text("$_selectedNumberPill"),
+                Text("$_selectedNumberPill", style: TextStyle(
+                  fontFamily: 'NotoSansArabic',
+                ),),
                 DropdownButton<int>(
                   
                   menuMaxHeight: 100,
@@ -42,7 +44,9 @@ class _DropMenuState extends State<DropMenu> {
                   borderRadius: BorderRadius.circular(20),
                   icon: Icon(Icons.arrow_drop_down),
                   //value: _selectedNumberPill,
-                  hint: Text("حبة"),
+                  hint: Text("حبة", style: TextStyle(
+                    fontFamily: 'NotoSansArabic',
+                  ),),
                   onChanged: (int? newValue) {
                     if (newValue != null) {
                       setState(() {
@@ -63,7 +67,9 @@ class _DropMenuState extends State<DropMenu> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('${index+1}', textAlign: TextAlign.center),
+                              Text('${index+1}', textAlign: TextAlign.center, style: TextStyle(
+                                fontFamily: 'NotoSansArabic',
+                              ),),
                             ],
                           ),
                         ),

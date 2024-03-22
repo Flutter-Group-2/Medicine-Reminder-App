@@ -43,7 +43,8 @@ class _NotificationsState extends State<Notifications> {
             const SizedBox(width: 8),
             Text(
               selectedTime.format(context),
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17, fontFamily: 'NotoSansArabic',
+              ),
             ),
           ],
         ),

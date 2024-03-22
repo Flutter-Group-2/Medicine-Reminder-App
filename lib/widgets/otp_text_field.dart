@@ -33,7 +33,8 @@ class TextFieldOTP extends StatelessWidget {
         keyboardType: TextInputType.number,
         inputFormatters: [LengthLimitingTextInputFormatter(1)],
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 25),
+        style: TextStyle(fontSize: 25, fontFamily: 'NotoSansArabic',
+        ),
         decoration: InputDecoration(
             fillColor: pureWhite,
             filled: true,

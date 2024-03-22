@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
@@ -57,35 +58,33 @@ class LoginView extends StatelessWidget {
                         bottomRight: Radius.circular(16),
                       ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const Center(
-                          child: CircleAvatar(
-                            backgroundImage:
-                                AssetImage("assets/images/logo_2.png"),
-                            radius: 70,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/logo_2.png',
+                            width: 175,
+                            height: 175,
                           ),
-                        ),
-                        Text(
-                          "ساعد",
-                          style: TextStyle(
-                              color: white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                        height32,
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "تسجيل الدخول",
-                            style: TextStyle(
-                                color: white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30),
-                          ),
-                        ),
-                      ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset('assets/icons/hand_pell.svg'),
+                              width4,
+                              Text(
+                                'ساعد',
+                                style: TextStyle(
+                                    fontFamily: 'Cairo',
+                                    fontSize: 35,
+                                    height: 0.1,
+                                    color: white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   height16,
@@ -98,6 +97,7 @@ class LoginView extends StatelessWidget {
                           child: Text(
                             "الإيميل",
                             style: TextStyle(
+                              fontFamily: 'MarkaziText',
                               color: black,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -114,6 +114,7 @@ class LoginView extends StatelessWidget {
                           child: Text(
                             "كلمة المرور",
                             style: TextStyle(
+                              fontFamily: 'MarkaziText',
                               color: black,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -135,6 +136,7 @@ class LoginView extends StatelessWidget {
                             child: Text(
                               "هل نسيت كلمة المرور؟",
                               style: TextStyle(
+                                fontFamily: 'MarkaziText',
                                 color: green,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -166,6 +168,7 @@ class LoginView extends StatelessWidget {
                               TextSpan(
                                 text: 'سجل الآن',
                                 style: TextStyle(
+                                  fontFamily: 'MarkaziText',
                                   color: green,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,

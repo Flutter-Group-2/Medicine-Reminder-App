@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
+import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/views/bottom_nav_bar/view/bottom_nav_bar.dart';
@@ -32,6 +34,22 @@ class SplashScreen extends StatelessWidget {
                 width: 200,
                 height: 200,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/icons/hand_pell.svg'),
+                  width4,
+                  Text(
+                    'ساعد',
+                    style: TextStyle(
+                        fontFamily: 'Cairo',
+                        fontSize: 35,
+                        height: 0.5,
+                        color: white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              )
             ],
           ),
         ),

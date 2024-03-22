@@ -13,7 +13,8 @@ class ScanView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: green,
         leading: Icon(Icons.qr_code_scanner, color: white,),
-        title: Text('مسح الباركود', style: TextStyle(color: white),),
+        title: Text('مسح الباركود', style: TextStyle(color: white, fontFamily: 'MarkaziText',
+          ),),
         centerTitle: true,
       ),
       body: Padding(
@@ -28,22 +29,26 @@ class ScanView extends StatelessWidget {
                   if (state is ScanInitial) {
                     return Text(
                       "لنقم بالمسح",
-                      style: TextStyle(color: Colors.blue, fontSize: 30),
+                      style: TextStyle(color: green, fontSize: 30, fontFamily: 'MarkaziText',
+                      ),
                     );
                   } else if (state is ScanSuccess) {
                     return Text(
                       state.qrString,
-                      style: TextStyle(color: Colors.blue, fontSize: 30),
+                      style: TextStyle(color: green, fontSize: 30, fontFamily: 'MarkaziText',
+                      ),
                     );
                   } else if (state is ScanFailure) {
                     return Text(
                       'عذرًا، لم نتمكن من قراءة الباركود. يرجى المحاولة مرة أخرى.',
-                      style: TextStyle(color: Colors.red, fontSize: 30),
+                      style: TextStyle(color: Colors.red, fontSize: 30, fontFamily: 'MarkaziText',
+                      ),
                     );
                   } else if (state is ScanCanceled) {
                     return Text(
                       'تم إلغاء مسح الباركود',
-                      style: TextStyle(color: black, fontSize: 30),
+                      style: TextStyle(color: black, fontSize: 30, fontFamily: 'MarkaziText',
+                      ),
                     );
                   } else {
                     return Container();

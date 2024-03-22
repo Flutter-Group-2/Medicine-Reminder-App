@@ -26,7 +26,8 @@ class ResetPasswordView extends StatelessWidget {
             icon: Icon(Icons.arrow_back, color: pureWhite)),
         title: Text(
           "الرجوع",
-          style: TextStyle(color: pureWhite),
+          style: TextStyle(color: pureWhite, fontFamily: 'MarkaziText',
+          ),
         ),
         actions: [
           IconButton(
@@ -72,6 +73,7 @@ class ResetPasswordView extends StatelessWidget {
                     const Text(
                       "إعادة تعيين كلمة المرور",
                       style: TextStyle(
+                          fontFamily: 'MarkaziText',
                           color: black,
                           fontWeight: FontWeight.bold,
                           fontSize: 30),
@@ -80,6 +82,7 @@ class ResetPasswordView extends StatelessWidget {
                       "أهلاً بك! فقط أدخل بريدك الإلكتروني، وسنُرسل لك رمز التحقق، لإعادة تعيين كلمة المرور، دعنا نكون جزءًا من الحل لتأمين وصولك وراحتك",
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          fontFamily: 'MarkaziText',
                           color: black,
                           fontWeight: FontWeight.bold,
                           fontSize: 15),
@@ -106,7 +109,8 @@ class ResetPasswordView extends StatelessWidget {
                         },
                         child: Text(
                           "الرجوع الى تسجيل الدخول",
-                          style: TextStyle(color: grey),
+                          style: TextStyle(color: grey, fontFamily: 'MarkaziText',
+                          ),
                         ))
                   ],
                 );

@@ -26,7 +26,7 @@ class HomeView extends StatelessWidget {
               child: Text(
                 "أدويتي",
                 style: TextStyle(
-                    fontSize: 24, color: black, fontWeight: FontWeight.w600),
+                    fontSize: 24, color: black,fontFamily: 'MarkaziText', fontWeight: FontWeight.w600),
               ),
             ),
             height10,

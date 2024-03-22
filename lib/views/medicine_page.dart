@@ -19,10 +19,9 @@ class MedicineView extends StatelessWidget {
               child: Text(
                 "أدويتي",
                 style: TextStyle(
-                    fontSize: 40, color: black, fontWeight: FontWeight.w600),
+                    fontSize: 40, color: black, fontWeight: FontWeight.w600, height: 0.8),
               ),
             ),
-            height10,
             ListView.builder(
                 shrinkWrap: true,
                 itemCount: 4,

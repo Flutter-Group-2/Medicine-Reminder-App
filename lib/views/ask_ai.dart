@@ -29,23 +29,34 @@ class AskAiPage extends StatelessWidget {
               children: [
                 Image.asset("assets/images/circlerline.png"),
                 Positioned(
-                  top: 0,
-                  right: 30,
-                  child: Container(
-                  width: 105,
-                  height: 50,
-
-                  decoration: BoxDecoration(color: pureWhite,borderRadius: BorderRadius.circular(60)),
-                  
-                  child: Center(child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    Text("سارة"),
-                    width4,
-                    Text("مرحبا")
-
-                  ],),)
-                )),
+                    top: 0,
+                    right: 30,
+                    child: Container(
+                        width: 105,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: pureWhite,
+                            borderRadius: BorderRadius.circular(60)),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "سارة",
+                                style: TextStyle(
+                                  fontFamily: 'Cairo',
+                                ),
+                              ),
+                              width4,
+                              Text(
+                                "مرحبا",
+                                style: TextStyle(
+                                  fontFamily: 'Cairo',
+                                ),
+                              )
+                            ],
+                          ),
+                        ))),
                 Container(
                   height: 220,
                   child: Stack(
@@ -61,6 +72,7 @@ class AskAiPage extends StatelessWidget {
                             Text(
                               "ساعد",
                               style: TextStyle(
+                                  fontFamily: 'Cairo',
                                   color: pureWhite,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 26),
@@ -77,11 +89,13 @@ class AskAiPage extends StatelessWidget {
             Text(
               "أنا ساعد",
               style: TextStyle(
+                fontFamily: 'MarkaziText',
                   color: pureWhite, fontWeight: FontWeight.bold, fontSize: 26),
             ),
             Text(
               "كيف يمكنني مساعدتك؟",
               style: TextStyle(
+                fontFamily: 'MarkaziText',
                   color: pureWhite, fontWeight: FontWeight.bold, fontSize: 26),
             ),
             height56,

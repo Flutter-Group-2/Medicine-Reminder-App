@@ -14,7 +14,8 @@ class CustomLabel extends StatelessWidget {
         child: Text(
           label,
           style:
-              TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+              TextStyle(fontSize: 15, fontWeight: FontWeight.normal, fontFamily: 'NotoSansArabic',
+          ),
         ));
   }
 }

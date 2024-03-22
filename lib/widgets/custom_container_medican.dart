@@ -30,7 +30,9 @@ class ContainerMedication extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text("تم أخذ الدواء"), // Medicine state
+                const Text("تم أخذ الدواء", style: TextStyle(
+                  fontFamily: 'NotoSansArabic',
+                ),), // Medicine state
                 width8,
                 Container(
                   width: 10,
@@ -45,6 +47,7 @@ class ContainerMedication extends StatelessWidget {
                     Text(
                       "الزنك", // Medicine Name
                       style: TextStyle(
+                          fontFamily: 'NotoSansArabic',
                           fontSize: 15,
                           color: black,
                           fontWeight: FontWeight.w500),
@@ -54,6 +57,7 @@ class ContainerMedication extends StatelessWidget {
                         Text(
                           "ص", // Time zone
                           style: TextStyle(
+                            fontFamily: 'NotoSansArabic',
                             fontSize: 15,
                             color: Color(0xff504E4E),
                             fontWeight: FontWeight.w500,
@@ -65,6 +69,7 @@ class ContainerMedication extends StatelessWidget {
                           child: Text(
                             "5:30", // Medicine time
                             style: TextStyle(
+                              fontFamily: 'NotoSansArabic',
                               fontSize: 15,
                               color: Color(0xff504E4E),
                               fontWeight: FontWeight.w500,
@@ -84,7 +89,7 @@ class ContainerMedication extends StatelessWidget {
             height: context.getHeight() / 10.7,
             alignment: Alignment.centerRight,
             margin: const EdgeInsets.symmetric(vertical: 10),
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
               color: white,
@@ -102,6 +107,7 @@ class ContainerMedication extends StatelessWidget {
                     Text(
                       "الزنك",
                       style: TextStyle(
+                          fontFamily: 'NotoSansArabic',
                           fontSize: 15,
                           color: black,
                           fontWeight: FontWeight.w500),
@@ -111,6 +117,7 @@ class ContainerMedication extends StatelessWidget {
                         Text(
                           "تم",
                           style: TextStyle(
+                            fontFamily: 'NotoSansArabic',
                             fontSize: 15,
                             color: Color(0xff504E4E),
                             fontWeight: FontWeight.w500,
@@ -125,9 +132,11 @@ class ContainerMedication extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
+                        width4,
                         Text(
-                          "ص",
+                          " ص",
                           style: TextStyle(
+                            fontFamily: 'NotoSansArabic',
                             fontSize: 15,
                             color: Color(0xff504E4E),
                             fontWeight: FontWeight.w500,
@@ -139,6 +148,7 @@ class ContainerMedication extends StatelessWidget {
                           child: Text(
                             "5:30",
                             style: TextStyle(
+                              fontFamily: 'NotoSansArabic',
                               fontSize: 15,
                               color: Color(0xff504E4E),
                               fontWeight: FontWeight.w500,

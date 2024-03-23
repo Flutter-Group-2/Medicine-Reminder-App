@@ -11,6 +11,7 @@ class DBServices {
   int pellPireod = 0;
   TimeOfDay time = TimeOfDay.now();
   String email = "";
+  String nameUser = "بك";
 
   // ----- Auth ------
 
@@ -25,6 +26,14 @@ class DBServices {
   //create user
   Future createUser({required String name, required String email}) async {
     await supabase.from('user').insert({'email': email, 'username': name});
+    nameUser = name;
+  }
+
+  Future getUser({required String id}) async {
+    var userInfo =
+        await supabase.from('user').select('*').match({'id': id}).single();
+    print(userInfo);
+    nameUser = userInfo['username'];
   }
 
   //Login
@@ -40,7 +49,11 @@ class DBServices {
   //get current session
   Future getCurrentSession() async {
     final session = supabase.auth.currentSession;
-    return session;
+    if (session != null) {
+      return session;
+    } else {
+      return;
+    }
   }
 
   //get current session

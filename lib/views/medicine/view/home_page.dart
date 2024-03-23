@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
+import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/medicine/bloc/medicine_bloc.dart';
@@ -15,10 +17,13 @@ class HomeView extends StatelessWidget {
     return BlocProvider(
       create: (context) => MedicineBloc()..add(MedicineLoadEvent()),
       child: Builder(builder: (context) {
+        final locator = GetIt.I.get<DBServices>();
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size(context.getWidth(), context.getHeight() / 5.8),
-            child: HeaderHomePage(),
+            child: HeaderHomePage(
+              name: locator.nameUser,
+            ),
           ),
           body: Padding(
             padding: const EdgeInsets.all(40.0),

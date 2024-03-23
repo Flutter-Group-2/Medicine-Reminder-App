@@ -8,7 +8,6 @@ import 'package:medicine_reminder_app/views/bottom_nav_bar/bloc/nav_bar_bloc.dar
 import 'package:medicine_reminder_app/views/qr_barcode/bloc/scan_bloc.dart';
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await databaseConfiguration();
@@ -29,10 +28,10 @@ class MainApp extends StatelessWidget {
         BlocProvider(
           create: (context) => NavBarBloc(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => ScanBloc(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => ChatGptBloc(),
         ),
       ],

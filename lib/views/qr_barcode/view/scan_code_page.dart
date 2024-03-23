@@ -27,10 +27,19 @@ class ScanView extends StatelessWidget {
               BlocBuilder<ScanBloc, ScanState>(
                 builder: (context, state) {
                   if (state is ScanInitial) {
-                    return Text(
-                      "لنقم بالمسح",
-                      style: TextStyle(color: green, fontSize: 30, fontFamily: 'MarkaziText',
-                      ),
+                    return Column(
+                      children: [
+                         Image.asset(
+                          'assets/images/logo_2.png',
+                          width: 175,
+                          height: 175,
+                        ),
+                        Text(
+                          "لنقم بالمسح",
+                          style: TextStyle(color: green, fontSize: 30, fontFamily: 'MarkaziText',
+                          ),
+                        ),
+                      ],
                     );
                   } else if (state is ScanSuccess) {
                     return Text(
@@ -39,16 +48,34 @@ class ScanView extends StatelessWidget {
                       ),
                     );
                   } else if (state is ScanFailure) {
-                    return Text(
-                      'عذرًا، لم نتمكن من قراءة الباركود. يرجى المحاولة مرة أخرى.',
-                      style: TextStyle(color: Colors.red, fontSize: 30, fontFamily: 'MarkaziText',
-                      ),
+                    return Column(
+                      children: [
+                         Image.asset(
+                          'assets/images/logo_2.png',
+                          width: 175,
+                          height: 175,
+                        ),
+                        Text(
+                          'عذرًا، لم نتمكن من قراءة الباركود. يرجى المحاولة مرة أخرى.',
+                          style: TextStyle(color: Colors.red, fontSize: 30, fontFamily: 'MarkaziText',
+                          ),
+                        ),
+                      ],
                     );
                   } else if (state is ScanCanceled) {
-                    return Text(
-                      'تم إلغاء مسح الباركود',
-                      style: TextStyle(color: black, fontSize: 30, fontFamily: 'MarkaziText',
-                      ),
+                    return Column(
+                      children: [
+                         Image.asset(
+                          'assets/images/logo_2.png',
+                          width: 175,
+                          height: 175,
+                        ),
+                        Text(
+                          'تم إلغاء مسح الباركود',
+                          style: TextStyle(color: green, fontSize: 30, fontFamily: 'MarkaziText',
+                          ),
+                        ),
+                      ],
                     );
                   } else {
                     return Container();

@@ -16,9 +16,9 @@ class HeaderHomePage extends StatelessWidget {
       listener: (context, state) {
         if (state is AuthSuccessState) {
           context.push(view: LoginView(), isPush: true);
-          context.getMessages(msg: state.msg, color: green);
+          context.getMessages(msg: state.msg, color: green, context: (context));
         } else if (state is AuthErrorState) {
-          context.getMessages(msg: state.msg, color: red);
+          context.getMessages(msg: state.msg, color: red, context: (context));
         }
       },
       child: Container(

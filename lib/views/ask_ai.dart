@@ -37,7 +37,7 @@ class AskAiPage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: pureWhite,
                             borderRadius: BorderRadius.circular(60)),
-                        child: Center(
+                        child: const Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

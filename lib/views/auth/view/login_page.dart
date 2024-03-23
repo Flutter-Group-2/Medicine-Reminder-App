@@ -13,12 +13,12 @@ import 'package:medicine_reminder_app/views/auth/view/siginup_page.dart';
 import 'package:medicine_reminder_app/views/auth/view/reset_password_page.dart';
 import 'package:medicine_reminder_app/views/bottom_nav_bar/view/bottom_nav_bar.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
+import 'package:medicine_reminder_app/widgets/custom_lodaing_circle.dart';
 import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
-
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
@@ -31,16 +31,16 @@ class LoginView extends StatelessWidget {
             listener: (context, state) {
               if (state is AuthSuccessState) {
                 context.push(view: BottomNav(), isPush: true);
-                context.getMessages(msg: state.msg, color: green);
+                context.getMessages(
+                    msg: state.msg, color: green, context: (context));
               } else if (state is AuthErrorState) {
-                context.getMessages(msg: state.msg, color: red);
+                context.getMessages(
+                    msg: state.msg, color: red, context: (context));
               }
             },
             builder: (context, state) {
               if (state is AuthLoadingState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return LoadingScreen();
               }
               return Column(
                 children: [

@@ -9,6 +9,7 @@ import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/views/auth/view/password_change_view.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
+import 'package:medicine_reminder_app/widgets/custom_lodaing_circle.dart';
 import 'package:medicine_reminder_app/widgets/otp_text_field.dart';
 import 'package:timer_button/timer_button.dart';
 
@@ -30,16 +31,14 @@ class OTPView extends StatelessWidget {
       listener: (context, state) {
         if (state is AuthSuccessState) {
           context.push(view: ChangePasswordView(), isPush: true);
-          context.getMessages(msg: state.msg, color: green);
+          context.getMessages(msg: state.msg, color: green, context: (context));
         } else if (state is AuthErrorState) {
-          context.getMessages(msg: state.msg, color: red);
+          context.getMessages(msg: state.msg, color: red, context: (context));
         }
       },
       builder: (context, state) {
         if (state is AuthLoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return LoadingScreen();
         }
         return Scaffold(
           resizeToAvoidBottomInset: false,

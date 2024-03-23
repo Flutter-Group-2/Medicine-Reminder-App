@@ -26,10 +26,10 @@ class SignUpView extends StatelessWidget {
             child: BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state is AuthSuccessState) {
-                  context.getMessages(msg: state.msg, color: green);
+                  context.getMessagesBar(msg: state.msg, color: green);
                   context.push(view: LoginView(), isPush: false);
                 } else if (state is AuthErrorState) {
-                  context.getMessages(msg: state.msg, color: red);
+                  context.getMessagesBar(msg: state.msg, color: red);
                 }
               },
               builder: (context, state) {

@@ -7,6 +7,7 @@ import 'package:medicine_reminder_app/model/medicine_model.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/medicine/view/edit_medicine_page.dart';
+import 'package:medicine_reminder_app/widgets/custom_show_dialog.dart';
 
 class ContainerMedication extends StatelessWidget {
   const ContainerMedication(
@@ -38,13 +39,23 @@ class ContainerMedication extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text("تم أخذ الدواء"), // Medicine state
-                  width8,
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, color: green),
+                  TextButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return MedicineDialog();
+                        },
+                      );
+                    },
+                    child: Text('تنبيه الدواء',
+                    style: const TextStyle(
+                        fontFamily: 'NotoSansArabic',
+                        fontSize: 15,
+                        color: Color(0xff504E4E),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                   width80,
                   Column(

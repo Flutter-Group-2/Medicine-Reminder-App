@@ -5,7 +5,7 @@ import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
-import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
+import 'package:medicine_reminder_app/views/start_page/first_page.dart';
 
 class HeaderHomePage extends StatelessWidget {
   const HeaderHomePage({super.key, required this.name});
@@ -15,7 +15,7 @@ class HeaderHomePage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccessState) {
-          context.push(view: LoginView(), isPush: true);
+          context.push(view: FirstView(), isPush: true);
           context.getMessages(
             msg: state.msg,
             color: green,

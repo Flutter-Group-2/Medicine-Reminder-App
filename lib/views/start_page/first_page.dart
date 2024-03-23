@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/views/auth/view/siginup_page.dart';
+import 'package:medicine_reminder_app/views/bottom_nav_bar/view/bottom_nav_bar.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
 
 class FirstView extends StatelessWidget {
@@ -31,7 +33,6 @@ class FirstView extends StatelessWidget {
                 buttonColor: green,
                 styleColor: white,
                 onPressed: () {
-                  // ** here is logic ** \\
                   context.push(view: LoginView(), isPush: false);
                 },
               ),
@@ -42,7 +43,7 @@ class FirstView extends StatelessWidget {
                 borderColor: green,
                 styleColor: black,
                 onPressed: () {
-                  // ** here is logic ** \\
+                  context.push(view: BottomNav(), isPush: false);
                 },
               ),
               height20,
@@ -67,16 +68,34 @@ class FirstView extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter),
         ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/logo_2.png"),
-                radius: 70,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/logo_2.png',
+                width: 175,
+                height: 175,
               ),
-            ),
-          ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset('assets/icons/hand_pell.svg'),
+                  width4,
+                  Text(
+                    'ساعد',
+                    style: TextStyle(
+                        fontFamily: 'Cairo',
+                        fontSize: 35,
+                        height: 0.1,
+                        color: white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              height100
+            ],
+          ),
         ),
       ),
     );

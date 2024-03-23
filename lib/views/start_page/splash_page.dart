@@ -5,8 +5,8 @@ import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
-import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/views/bottom_nav_bar/view/bottom_nav_bar.dart';
+import 'package:medicine_reminder_app/views/start_page/first_page.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
           if (state.isAvailable != null) {
             context.push(view: BottomNav(), isPush: false);
           } else {
-            context.push(view: LoginView(), isPush: false);
+            context.push(view: FirstView(), isPush: false);
           }
         }
       },

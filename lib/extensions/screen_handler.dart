@@ -16,7 +16,7 @@ extension Screen on BuildContext {
     return MediaQuery.of(this).size.height;
   }
 
-  getMessages({required String msg, required Color color}) {
+  getMessagesBar({required String msg, required Color color}) {
     return ScaffoldMessenger.of(this).showSnackBar(
       SnackBar(
         content: Padding(
@@ -32,6 +32,33 @@ extension Screen on BuildContext {
         ),
         backgroundColor: color,
       ),
+    );
+  }
+
+  getMessages({required String msg, required Color color, int duration = 3}) {
+    showDialog(
+      context: this,
+      builder: (BuildContext context) {
+        Future.delayed(Duration(seconds: duration), () {
+          Navigator.of(context).pop();
+        });
+
+        return AlertDialog(
+          backgroundColor: color,
+          content: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              textAlign: TextAlign.center,
+              msg,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
 class TextFieldOTP extends StatelessWidget {
-  TextFieldOTP(
+  const TextFieldOTP(
       {super.key,
       required this.first,
       required this.last,
@@ -33,7 +33,7 @@ class TextFieldOTP extends StatelessWidget {
         keyboardType: TextInputType.number,
         inputFormatters: [LengthLimitingTextInputFormatter(1)],
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 25, fontFamily: 'NotoSansArabic',
+        style: const TextStyle(fontSize: 25, fontFamily: 'NotoSansArabic',
         ),
         decoration: InputDecoration(
             fillColor: pureWhite,

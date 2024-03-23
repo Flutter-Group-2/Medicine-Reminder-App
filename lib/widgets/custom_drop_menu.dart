@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:medicine_reminder_app/service/supabase_services.dart';
@@ -28,7 +27,7 @@ class _DropMenuState extends State<DropMenu> {
           height: 48,
           decoration: BoxDecoration(
             color: white,
-            borderRadius: BorderRadius.all(Radius.circular(14)),
+            borderRadius: const BorderRadius.all(Radius.circular(14)),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -36,7 +35,7 @@ class _DropMenuState extends State<DropMenu> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SvgPicture.asset("assets/icons/pells.svg"),
-                Text("$_selectedNumberPill", style: TextStyle(
+                Text("$_selectedNumberPill", style: const TextStyle(
                   fontFamily: 'NotoSansArabic',
                 ),),
                 DropdownButton<int>(
@@ -44,9 +43,8 @@ class _DropMenuState extends State<DropMenu> {
                   menuMaxHeight: 100,
                   dropdownColor: pureWhite,
                   borderRadius: BorderRadius.circular(20),
-                  icon: Icon(Icons.arrow_drop_down),
-                  //value: _selectedNumberPill,
-                  hint: Text("حبة", style: TextStyle(
+                  icon: const Icon(Icons.arrow_drop_down),
+                 hint: const Text("حبة", style: TextStyle(
                     fontFamily: 'NotoSansArabic',
                   ),),
                   onChanged: (int? newValue) {
@@ -70,7 +68,7 @@ class _DropMenuState extends State<DropMenu> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('${index+1}', textAlign: TextAlign.center, style: TextStyle(
+                              Text('${index+1}', textAlign: TextAlign.center, style: const TextStyle(
                                 fontFamily: 'NotoSansArabic',
                               ),),
                             ],
@@ -84,7 +82,7 @@ class _DropMenuState extends State<DropMenu> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
         Container(
@@ -92,7 +90,7 @@ class _DropMenuState extends State<DropMenu> {
           height: 48,
           decoration: BoxDecoration(
             color: white,
-            borderRadius: BorderRadius.all(Radius.circular(14)),
+            borderRadius: const BorderRadius.all(Radius.circular(14)),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -106,9 +104,8 @@ class _DropMenuState extends State<DropMenu> {
                   dropdownColor: pureWhite,
                   borderRadius: BorderRadius.circular(20),
 
-                  icon: Icon(Icons.arrow_drop_down),
-                  // value: _selectedNumberDay,
-                  hint: Text("يوم"),
+                  icon: const Icon(Icons.arrow_drop_down),
+                  hint: const Text("يوم"),
                   onChanged: (int? newValue) {
                     if (newValue != null) {
                       setState(() {

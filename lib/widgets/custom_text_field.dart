@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
 class TextAuth extends StatelessWidget {
-  TextAuth({
+  const TextAuth({
     Key? key,
      this.hintText,
     this.isSecure = false,
@@ -32,7 +32,7 @@ class TextAuth extends StatelessWidget {
       ),
       child: Center(
         child: TextField(
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'NotoSansArabic',
           ),
           textAlign: TextAlign.right,

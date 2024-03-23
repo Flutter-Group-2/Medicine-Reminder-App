@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
@@ -55,7 +57,32 @@ class MedicineView extends StatelessWidget {
                     }
                   }
                   //TODO: change the UI for the empty list
-                  return const Text("لايوجد");
+                  return SizedBox(
+                    height: context.getHeight() * 0.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/images/nodrugs.jpeg"),
+                        const Text(
+                          "قم بإضافة دواء",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          height: 50,
+                          width: 50,
+                          child:
+                          Column(children: [
+                              Image.asset(
+                            "assets/images/arrowdown.png",
+                            fit: BoxFit.contain,
+                          ),
+                          ],)
+                         
+                        ),
+                      ],
+                    ),
+                  );
                 }),
               ],
             ),

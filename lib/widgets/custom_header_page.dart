@@ -8,17 +8,23 @@ import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 
 class HeaderHomePage extends StatelessWidget {
-  const HeaderHomePage({super.key});
-  
+  const HeaderHomePage({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccessState) {
           context.push(view: LoginView(), isPush: true);
-          context.getMessages(msg: state.msg, color: green);
+          context.getMessages(
+            msg: state.msg,
+            color: green,
+          );
         } else if (state is AuthErrorState) {
-          context.getMessages(msg: state.msg, color: red);
+          context.getMessages(
+            msg: state.msg,
+            color: red,
+          );
         }
       },
       child: Container(
@@ -57,7 +63,7 @@ class HeaderHomePage extends StatelessWidget {
                       Text(
                         'ساعد',
                         style: TextStyle(
-                             fontFamily: 'Cairo',
+                            fontFamily: 'Cairo',
                             fontSize: 30,
                             color: green,
                             fontWeight: FontWeight.bold),
@@ -74,7 +80,7 @@ class HeaderHomePage extends StatelessWidget {
                 width: 100,
                 height: 120,
                 child: Text(
-                  "مرحبا \nسارة ",
+                  "مرحبا \n$name ",
                   style: TextStyle(
                       fontFamily: 'MarkaziText',
                       fontSize: 40,
@@ -103,13 +109,16 @@ class HeaderHomePage extends StatelessWidget {
               left: 7,
               child: Container(
                 width: 26,
-                height: 26,                
+                height: 26,
                 child: Center(
                   child: IconButton(
                       onPressed: () {
                         context.read<AuthBloc>().add(LogoutEvent());
                       },
-                      icon: Icon(Icons.logout, color: white,)),
+                      icon: Icon(
+                        Icons.logout,
+                        color: white,
+                      )),
                 ),
               ),
             )

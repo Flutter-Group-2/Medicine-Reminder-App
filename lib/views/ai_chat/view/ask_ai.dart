@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
+import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/ai_chat/view/chat_page.dart';
@@ -13,6 +15,8 @@ class AskAiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locator = GetIt.I.get<DBServices>();
+
     return Scaffold(
       body: Container(
         height: double.maxFinite,
@@ -39,12 +43,12 @@ class AskAiPage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: pureWhite,
                             borderRadius: BorderRadius.circular(60)),
-                        child: const Center(
+                        child:  Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "سارة",
+                                locator.nameUser,
                                 style: TextStyle(
                                   fontFamily: 'Cairo',
                                 ),

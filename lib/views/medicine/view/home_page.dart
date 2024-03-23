@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
                   child: Text(
                     "أدويتي",
                     style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 30,
                         color: black,
                         fontWeight: FontWeight.w600),
                   ),
@@ -61,7 +61,12 @@ class HomeView extends StatelessWidget {
                       }
                     }
                     //TODO: change the UI for the empty list
-                    return Text("no data");
+                    return Column(
+                      children: [
+                        Image.asset('assets/images/NoDrugs.jpg'),
+                        Text("اجعل العناية بصحتك أولوية، وابدأ بجدولة مواعيد أخذ الأدوية الخاصة بك اليوم. بالاهتمام بالجدولة والالتزام بأخذ الأدوية في الوقت المحدد، فإنك تستثمر في صحتك ورفاهيتك المستقبلية. لا تجعل الإهمال يعرض صحتك للخطر، بل قم باتباع جدول مواعيد الأدوية الخاص بك بانتظام واستمتع بحياة صحية ومليئة بالنشاط والسعادة.",textAlign: TextAlign.center, style: TextStyle(fontSize: 15, fontFamily: 'NotoSansArabic',),),
+                      ],
+                    );
                   },
                 ),
               ],

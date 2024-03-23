@@ -65,8 +65,15 @@ class HomeView extends StatelessWidget {
                             });
                       }
                     }
-                    //TODO: change the UI for the empty list
-                    return Text("no data");
+                    return Column(
+
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        height56,
+                        Image.asset("assets/images/nodrugs.jpeg"),
+                        Text("لا يوجد تنبيهات "),
+                      ],
+                    );
                   },
                 ),
               ],

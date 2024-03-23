@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 
 class MedicineDialog extends StatelessWidget {
+  const MedicineDialog({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(

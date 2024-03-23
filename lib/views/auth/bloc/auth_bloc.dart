@@ -37,16 +37,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(AuthSuccessState(
             msg:
-                "تم إكمال عملية التسجيل بنجاح، يرجى تأكيد بريدك الإلكتروني قبل تسجيل الدخول."));
+                "تم إكمال عملية التسجيل بنجاح، يرجى تأكيد بريدك الإلكتروني قبل تسجيل الدخول"));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:
-                "فشل في عملية التسجيل: ${e.statusCode}. يرجى التحقق من بريدك الإلكتروني وكلمة المرور."));
+                "فشل في عملية التسجيل: ${e.statusCode}. يرجى التحقق من بريدك الإلكتروني وكلمة المرور"));
       } on Exception catch (e) {
         emit(AuthErrorState(msg: "حدث خطأ أثناء عملية التسجيل: $e"));
       }
     } else {
-      emit(AuthErrorState(msg: "يرجى ملء جميع الحقول المطلوبة."));
+      emit(AuthErrorState(msg: "يرجى ملء جميع الحقول المطلوبة"));
     }
   }
 
@@ -57,11 +57,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         await serviceLocator.login(
             email: event.email, password: event.password);
 
-        emit(AuthSuccessState(msg: "تم تسجيل الدخول بنجاح."));
+        emit(AuthSuccessState(msg: "تم تسجيل الدخول بنجاح"));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:
-                "البريد الإلكتروني أو كلمة المرور غير صحيحة: ${e.statusCode}. يرجى التحقق من بيانات الاعتماد الخاصة بك والمحاولة مرة أخرى."));
+                "البريد الإلكتروني أو كلمة المرور غير صحيحة: ${e.statusCode}. يرجى التحقق من بيانات الاعتماد الخاصة بك والمحاولة مرة أخرى"));
       } on Exception catch (e) {
         emit(AuthErrorState(msg: "حدث خطأ أثناء عملية تسجيل الدخول: $e"));
       }
@@ -79,6 +79,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(SessionAvailabilityState(isAvailable: sessionData));
       final userId = await serviceLocator.getCurrentUserId();
       await serviceLocator.getUser(id: userId);
+      emit(SessionAvailabilityState(isAvailable: sessionData));
     } catch (e) {
       print(e);
     }
@@ -101,18 +102,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         serviceLocator.email = event.email;
         emit(AuthSuccessState(
             msg:
-                "تم إرسال رمز OTP لإعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك."));
+                "تم إرسال رمز OTP لإعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك"));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:
-                "عنوان البريد الإلكتروني غير صالح. يرجى تقديم عنوان بريد إلكتروني صالح."));
+                "عنوان البريد الإلكتروني غير صالح. يرجى تقديم عنوان بريد إلكتروني صالح"));
       } on Exception catch (e) {
         emit(AuthErrorState(
             msg:
-                "واجهنا مشكلة أثناء معالجة طلبك. يرجى المحاولة مرة أخرى في وقت لاحق."));
+                "واجهنا مشكلة أثناء معالجة طلبك. يرجى المحاولة مرة أخرى في وقت لاحق"));
       }
     } else {
-      emit(AuthErrorState(msg: "يرجى تقديم عنوان بريدك الإلكتروني."));
+      emit(AuthErrorState(msg: "يرجى تقديم عنوان بريدك الإلكتروني"));
     }
   }
 
@@ -157,7 +158,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     } else {
       emit(AuthErrorState(
-          msg: "كلمات المرور غير متطابقة. يرجى التأكد من تطابق كلمات المرور."));
+          msg: "كلمات المرور غير متطابقة. يرجى التأكد من تطابق كلمات المرور"));
     }
   }
 

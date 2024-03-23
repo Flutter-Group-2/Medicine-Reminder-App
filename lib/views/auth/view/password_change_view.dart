@@ -20,7 +20,7 @@ class ChangePasswordView extends StatelessWidget {
       listener: (context, state) {
         if (state is AuthSuccessState) {
           context.push(view: const LoginView(), isPush: true);
-          context.getMessages(msg: state.msg, color: green);
+          context.getMessagesBar(msg: state.msg, color: green);
         } else if (state is AuthErrorState) {
           context.getMessages(msg: state.msg, color: red);
         }

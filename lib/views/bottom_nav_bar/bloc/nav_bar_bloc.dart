@@ -6,7 +6,7 @@ import 'package:medicine_reminder_app/views/ai_chat/view/ask_ai.dart';
 import 'package:medicine_reminder_app/views/medicine/view/add_medication_page.dart';
 import 'package:medicine_reminder_app/views/medicine/view/home_page.dart';
 import 'package:medicine_reminder_app/views/medicine/view/medicine_page.dart';
-import 'package:medicine_reminder_app/views/qr_barcode/scan_code_page.dart';
+import 'package:medicine_reminder_app/views/qr_barcode/view/scan_code_page.dart';
 import 'package:meta/meta.dart';
 
 part 'nav_bar_event.dart';

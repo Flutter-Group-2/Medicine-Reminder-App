@@ -7,6 +7,7 @@ import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 import 'package:medicine_reminder_app/views/auth/view/otp_view.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
+import 'package:medicine_reminder_app/widgets/custom_lodaing_circle.dart';
 import 'package:medicine_reminder_app/widgets/custom_text_field.dart';
 
 class ResetPasswordView extends StatelessWidget {
@@ -46,17 +47,15 @@ class ResetPasswordView extends StatelessWidget {
             child: BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state is AuthSuccessState) {
-                  context.getMessages(msg: state.msg, color: green);
-                  context.push(view: OTPView(), isPush: true);
+                  context.getMessagesBar(msg: state.msg, color: green);
+                  context.push(view: OTPView(), isPush: false);
                 } else if (state is AuthErrorState) {
-                  context.getMessages(msg: state.msg, color: red);
+                  context.getMessagesBar(msg: state.msg, color: red);
                 }
               },
               builder: (context, state) {
                 if (state is AuthLoadingState) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return LoadingScreen();
                 }
                 return Column(
                   children: [

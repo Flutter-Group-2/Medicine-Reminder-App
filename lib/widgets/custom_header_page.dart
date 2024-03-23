@@ -8,17 +8,23 @@ import 'package:medicine_reminder_app/views/auth/bloc/auth_bloc.dart';
 import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 
 class HeaderHomePage extends StatelessWidget {
-  HeaderHomePage({super.key, required this.name});
-  String name;
+  const HeaderHomePage({super.key, required this.name});
+  final String name;
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccessState) {
           context.push(view: LoginView(), isPush: true);
-          context.getMessages(msg: state.msg, color: green);
+          context.getMessages(
+            msg: state.msg,
+            color: green,
+          );
         } else if (state is AuthErrorState) {
-          context.getMessages(msg: state.msg, color: red);
+          context.getMessages(
+            msg: state.msg,
+            color: red,
+          );
         }
       },
       child: Container(

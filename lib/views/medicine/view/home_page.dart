@@ -55,7 +55,7 @@ class HomeView extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return ContainerMedication(
                                 medicine: state.list[index],
-                                isShowState: true,
+                                isShowState: true
                               );
                             });
                       }

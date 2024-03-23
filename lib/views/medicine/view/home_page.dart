@@ -40,19 +40,35 @@ class HomeView extends StatelessWidget {
                 height10,
                 BlocBuilder<MedicineBloc, MedicineState>(
                   builder: (context, state) {
-                    if(state is MedicineLoadingState){
+                    if (state is MedicineLoadingState) {
                       return const Center(child: CircularProgressIndicator());
                     }
-                    if(state is MedicineLoadedState){
-                    return ListView.builder(scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: state.list.length,
-                        itemBuilder: (context, index) {
-                          return ContainerMedication(
-                            medicine: state.list[index],
-                            isShowState: true,
-                          );
-                        });
+                    if (state is MedicineLoadedState) {
+                      return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: state.list.length,
+                          itemBuilder: (context, index) {
+                            return ContainerMedication(
+                                medicine: state.list[index],
+                                isShowState: true,
+                                // onTap: () {
+                                //   showDialog(
+                                //     context: context,
+                                //     builder: (context) {
+                                //       return Container(
+                                //           child: Column(
+                                //         children: [
+                                //           ElevatedButton(
+                                //               onPressed: () {bloc.add(MedicineUpdated(state.list[index], id))},
+                                //               child: Text("زيادة 15 دقيقة"))
+                                //         ],
+                                //       ));
+                                //     },
+                                //   );
+                                // }
+                                );
+                          });
                     }
                     return Text("no data");
                   },

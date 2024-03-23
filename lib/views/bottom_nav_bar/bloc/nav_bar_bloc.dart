@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:medicine_reminder_app/views/add_medication_page.dart';
-import 'package:medicine_reminder_app/views/home_page.dart';
-import 'package:medicine_reminder_app/views/medicine_page.dart';
+import 'package:medicine_reminder_app/views/medicine/view/add_medication_page.dart';
+import 'package:medicine_reminder_app/views/medicine/view/home_page.dart';
+import 'package:medicine_reminder_app/views/medicine/view/medicine_page.dart';
 import 'package:meta/meta.dart';
 
 part 'nav_bar_event.dart';

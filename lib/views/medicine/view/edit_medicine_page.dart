@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/model/medicine_model.dart';
 import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/bottom_nav_bar/view/bottom_nav_bar.dart';
 import 'package:medicine_reminder_app/views/medicine/bloc/medicine_bloc.dart';
 import 'package:medicine_reminder_app/widgets/appBar_arrow_back.dart';
 import 'package:medicine_reminder_app/widgets/custom_elevated_button.dart';
@@ -18,6 +20,7 @@ import 'package:medicine_reminder_app/widgets/custom_drop_menu.dart';
 class EditMedicineView extends StatelessWidget {
   const EditMedicineView({super.key,required this.medicine});
   final MedicineModel medicine;
+  @override
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,9 @@ class EditMedicineView extends StatelessWidget {
       create: (context) => MedicineBloc(),
       child: BlocBuilder<MedicineBloc, MedicineState>(
         builder: (context, state) {
+  TextEditingController pellName = TextEditingController(text: medicine.name);
+          final bloc = BlocProvider.of<MedicineBloc>(context);
+
           return Scaffold(
               appBar: AppBar(
                   actions: const [AppBarArrowBack()],
@@ -53,20 +59,28 @@ class EditMedicineView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(14), color: white),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 20),
-                                  child: Text(
-                                    "الزنك",
-                                    style: TextStyle(
-                                        fontSize: 15, fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                SvgPicture.asset("assets/icons/drugs.svg"),
-                              ],
-                            ),
+                            child: SizedBox(
+              height: 48,
+              width: 319,
+              child: TextField(
+                controller: pellName,
+                textDirection: TextDirection.rtl,
+                decoration: InputDecoration(
+                  suffixIcon:Padding(
+                    padding: const EdgeInsets.only(right: 15,top: 12,bottom: 18),
+                    child: SvgPicture.asset("assets/icons/drugs.svg"),
+                  ),
+                  hintTextDirection: TextDirection.rtl,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  filled: true,
+                  fillColor: white,
+                  alignLabelWithHint: true,
+                ),
+              ),
+            ),
                           ),
                         )),
                     height48,
@@ -89,9 +103,10 @@ class EditMedicineView extends StatelessWidget {
                       text: "حفظ",
                       buttonColor: green,
                       styleColor: white,
-                      onPressed: () {
-                        // ** here is logic ** \\
-                      },
+                      onPressed: () async{
+                        final user_id=await locator.getCurrentUserId();
+                      bloc.add(MedicineUpdated(MedicineModel(name: pellName.text,count: locator.pellCount,period: locator.pellPireod,time: locator.time.toString(),userId:user_id),medicine.id!));
+context.push(view:BottomNav() , isPush: false);                      },
                     ),
                     height10,
                     CustomElevatedButton(
@@ -100,9 +115,8 @@ class EditMedicineView extends StatelessWidget {
                       styleColor: black,
                       borderColor: green,
                       onPressed: () async {
-                        final userId = await locator.getCurrentUserId();
-                        //await locator.insertMediationData("", userId, locator.time, locator.pellCount, locator.pellPireod);
-                        Navigator.pop(context);
+                      bloc.add(MedicineDeleted(medicine));
+context.push(view:BottomNav() , isPush: false);                      
                       },
                     )
                   ],

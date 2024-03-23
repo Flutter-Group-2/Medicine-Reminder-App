@@ -44,7 +44,7 @@ class MedicineView extends StatelessWidget {
                                               return
                                               ContainerMedication(
                                                 medicine:state.list[index] ,
-                                                isShowState: false,isEditState: true,
+                                                isShowState: false,isEditState: true ,
                                               );
                                             });
                       }return Text("data");

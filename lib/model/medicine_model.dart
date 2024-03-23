@@ -7,6 +7,7 @@ class MedicineModel {
   int? count;
   int? period;
   String? userId;
+  String? id;
 
   MedicineModel({this.name, this.time, this.count, this.period, this.userId});
 
@@ -16,16 +17,17 @@ class MedicineModel {
     count = json['count'];
     period = json['period'];
     userId = json['user_id'];
+    id=json['id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = name;
-    print("object");
     data['time'] = time;
     data['count'] = count;
     data['period'] = period;
     data['user_id'] = userId;
+    data["id"]=id;
     return data;
   }
 

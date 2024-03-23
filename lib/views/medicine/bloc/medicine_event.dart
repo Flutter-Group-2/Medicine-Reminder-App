@@ -19,6 +19,11 @@ class MedicineDeleted extends MedicineEvent {
 
 class MedicineUpdated extends MedicineEvent {
   final MedicineModel medicine;
-
-  MedicineUpdated(this.medicine);
+  final String id;
+  MedicineUpdated(this.medicine,this.id);
 }
+// class MedicineChangeState extends MedicineEvent {
+//   final MedicineModel medicine;
+//   final String id;
+//   MedicineUpdated(this.medicine,this.id);
+// }

@@ -8,7 +8,6 @@ import 'package:medicine_reminder_app/views/bottom_nav_bar/bloc/nav_bar_bloc.dar
 import 'package:medicine_reminder_app/views/qr_barcode/bloc/scan_bloc.dart';
 import 'package:medicine_reminder_app/views/splash_page.dart';
 
-import 'views/ai_chat/view/chat_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +38,7 @@ class MainApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ChatPage(),
+        home: SplashScreen(),
       ),
     );
   }

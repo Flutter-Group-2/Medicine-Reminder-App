@@ -23,7 +23,7 @@ class ChatGPT {
           "messages": [
             {
               "role": "system",
-              "content": "",
+              "content": "you are a helpful doctor know about medicine and provide advice in a short words",
             },
             {
               "role": "user",
@@ -34,7 +34,7 @@ class ChatGPT {
       ),
     )
         .then((value) {
-      final response = jsonDecode(value.body);
+      final response = jsonDecode(utf8.decode(value.bodyBytes) );
       answer = response["choices"][0]["message"]["content"];
     });
     return answer;

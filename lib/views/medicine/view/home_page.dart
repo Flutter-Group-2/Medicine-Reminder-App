@@ -53,16 +53,19 @@ class HomeView extends StatelessWidget {
                     }
                     if (state is MedicineLoadedState) {
                       if (state.list.isNotEmpty) {
-                        return ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemCount: state.list.length,
-                            itemBuilder: (context, index) {
-                              return ContainerMedication(
-                                medicine: state.list[index],
-                                isShowState: true,
-                              );
-                            });
+                        return SizedBox(
+                          height: context.getHeight() * 0.7,
+                          child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: state.list.length,
+                              itemBuilder: (context, index) {
+                                return ContainerMedication(
+                                  medicine: state.list[index],
+                                  isShowState: true,
+                                );
+                              }),
+                        );
                       }
                     }
                     return Column(

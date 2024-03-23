@@ -44,19 +44,21 @@ class MedicineView extends StatelessWidget {
                   }
                   if (state is MedicineLoadedState) {
                     if (state.list.isNotEmpty) {
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: state.list.length,
-                          itemBuilder: (context, index) {
-                            return ContainerMedication(
-                              medicine: state.list[index],
-                              isShowState: false,
-                              isEditState: true,
-                            );
-                          });
+                      return SizedBox(
+                        height: context.getHeight()*0.7,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.list.length,
+                            itemBuilder: (context, index) {
+                              return ContainerMedication(
+                                medicine: state.list[index],
+                                isShowState: false,
+                                isEditState: true,
+                              );
+                            }),
+                      );
                     }
                   }
-                  //TODO: change the UI for the empty list
                   return SizedBox(
                     height: context.getHeight() * 0.5,
                     child: Column(

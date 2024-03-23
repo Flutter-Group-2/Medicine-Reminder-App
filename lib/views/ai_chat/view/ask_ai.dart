@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/ai_chat/view/chat_page.dart';
 
 class AskAiPage extends StatelessWidget {
   const AskAiPage({super.key});
@@ -37,7 +39,7 @@ class AskAiPage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: pureWhite,
                             borderRadius: BorderRadius.circular(60)),
-                        child: Center(
+                        child: const Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -89,18 +91,24 @@ class AskAiPage extends StatelessWidget {
             Text(
               "أنا ساعد",
               style: TextStyle(
-                fontFamily: 'MarkaziText',
-                  color: pureWhite, fontWeight: FontWeight.bold, fontSize: 26),
+                  fontFamily: 'MarkaziText',
+                  color: pureWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 26),
             ),
             Text(
               "كيف يمكنني مساعدتك؟",
               style: TextStyle(
-                fontFamily: 'MarkaziText',
-                  color: pureWhite, fontWeight: FontWeight.bold, fontSize: 26),
+                  fontFamily: 'MarkaziText',
+                  color: pureWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 26),
             ),
             height56,
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push(view: const ChatPage(), isPush: true);
+                },
                 child: SvgPicture.asset("assets/icons/chat.svg")),
             height10,
             Text(

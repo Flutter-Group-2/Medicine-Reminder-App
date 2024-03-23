@@ -1,11 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:medicine_reminder_app/model/medicine_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class DBServices {
   //supabase client
   final supabase = Supabase.instance.client;
-
+  int pellCount = 0;
+  int pellPireod = 0;
+  TimeOfDay time = TimeOfDay.now();
   String email = "";
 
   // ----- Auth ------
@@ -39,6 +43,12 @@ class DBServices {
     return session;
   }
 
+  //get current session
+  Future getCurrentUserId() async {
+    final session = supabase.auth.currentSession!.user.id;
+    return session;
+  }
+
   //reset password
   Future resetPassword({required String email}) async {
     await supabase.auth.resetPasswordForEmail(
@@ -68,5 +78,46 @@ class DBServices {
   //Update user
   Future changePassword({required String password}) async {
     await supabase.auth.updateUser(UserAttributes(password: password));
+  }
+
+  Future<List<MedicineModel>> getAllMedicine() async {
+    final medicineListData = await supabase
+        .from('mediction')
+        .select('*')
+        .match({'user_id': supabase.auth.currentUser!.id});
+    List<MedicineModel> listOfMedicine = [];
+    for (var element in medicineListData) {
+      listOfMedicine.add(MedicineModel.fromJson(element));
+    }
+    return listOfMedicine;
+  }
+
+  //insert mediction
+  Future insertMediationData(MedicineModel medicine) async {
+    await supabase.from('mediction').insert({
+      'user_id': medicine.userId,
+      'time': medicine.time!.substring(9, 15),
+      "count": medicine.count,
+      "piriod": medicine.period,
+      "name": medicine.name
+    });
+  }
+
+  //update mediction
+  Future upDateMediationData(MedicineModel medicine, String id) async {
+    final usetID = await getCurrentUserId();
+
+    await supabase.from('mediction').update({
+      'user_id': usetID,
+      'time': medicine.time!.substring(9, 15),
+      'count': medicine.count,
+      'piriod': medicine.period,
+      'name': medicine.name,
+    }).eq("id", id);
+  }
+
+  //delete mediction
+  Future deleteMediationData(String id) async {
+    await supabase.from('mediction').delete().eq("id", id);
   }
 }

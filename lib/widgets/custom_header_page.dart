@@ -9,7 +9,7 @@ import 'package:medicine_reminder_app/views/auth/view/login_page.dart';
 
 class HeaderHomePage extends StatelessWidget {
   const HeaderHomePage({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(

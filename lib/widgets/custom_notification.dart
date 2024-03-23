@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
+import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
 
 class Notifications extends StatefulWidget {
@@ -71,6 +73,8 @@ class _NotificationsState extends State<Notifications> {
     if (picked != null && picked != selectedTime) {
       setState(() {
         selectedTime = picked;
+        GetIt.I.get<DBServices>().time=selectedTime;
+
       });
     }
   }

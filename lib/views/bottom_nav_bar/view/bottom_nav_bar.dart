@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/utils/colors.dart';
-import 'package:medicine_reminder_app/views/add_medication_page.dart';
+import 'package:medicine_reminder_app/views/medicine/view/add_medication_page.dart';
 import 'package:medicine_reminder_app/views/bottom_nav_bar/bloc/nav_bar_bloc.dart';
 
 class BottomNav extends StatelessWidget {

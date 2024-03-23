@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
                   child: Text(
                     "أدويتي",
                     style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 30,
                         color: black,
                         fontWeight: FontWeight.w600),
                   ),
@@ -66,7 +66,6 @@ class HomeView extends StatelessWidget {
                       }
                     }
                     return Column(
-
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         height56,

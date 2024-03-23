@@ -1,18 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class ChatGPT {
-  String linkChat = "https://api.openai.com/v1/chat/completions";
   Future<String> getChatAnswer(String prompt) async {
-    final uri = Uri.parse(linkChat);
+    await dotenv.load(fileName: ".env");
+    final uri = Uri.parse(dotenv.env["LinkGPT"]!);
     String answer = "";
     await http
         .post(
       uri,
       headers: {
-        "Authorization": "Bearer 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",
+        "Authorization":
+            "Bearer ${dotenv.env["GPTApiKey"]}",
         "Content-Type": "application/json",
       },
       body: jsonEncode(
@@ -21,8 +23,7 @@ class ChatGPT {
           "messages": [
             {
               "role": "system",
-              "content":
-                  "",
+              "content": "",
             },
             {
               "role": "user",

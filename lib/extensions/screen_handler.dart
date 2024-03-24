@@ -40,7 +40,7 @@ extension Screen on BuildContext {
       context: this,
       builder: (BuildContext context) {
         Future.delayed(Duration(seconds: duration), () {
-          Navigator.of(context).pop();
+          Navigator.of(context).canPop();
         });
 
         return AlertDialog(

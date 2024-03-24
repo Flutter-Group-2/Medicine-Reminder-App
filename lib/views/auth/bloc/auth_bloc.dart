@@ -34,10 +34,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             email: event.email, password: event.password);
 
         await serviceLocator.createUser(name: event.name, email: event.email);
+        final userId = await serviceLocator.getCurrentUserId();
+        await serviceLocator.getUser(id: userId);
 
-        emit(AuthSuccessState(
-            msg:
-                "تم إكمال عملية التسجيل بنجاح"));
+        emit(AuthSuccessState(msg: "تم إكمال عملية التسجيل بنجاح"));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:

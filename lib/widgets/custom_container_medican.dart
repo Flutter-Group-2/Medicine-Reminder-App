@@ -68,11 +68,11 @@ class ContainerMedication extends StatelessWidget {
                     Icons.circle,
                     size: 10,
                     color: medicine.state == stateEnum.notYet
-                        ? grey
+                        ? red
                         : medicine.state == stateEnum.take
                             ? green
                             : medicine.state == stateEnum.skip
-                                ? red
+                                ? Colors.orange
                                 : Colors.yellow,
                   ),
                   Expanded(

@@ -1,27 +1,79 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:medicine_reminder_app/model/medicine_model.dart';
+import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/medicine/bloc/medicine_bloc.dart';
 
 class MedicineDialog extends StatelessWidget {
-  const MedicineDialog({super.key});
-
+  MedicineDialog({super.key, required this.medicine});
+  MedicineModel medicine;
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
       title: Align(
-        alignment: Alignment.centerRight,
-        child: Text('حالة تناول الدواء')),
+          alignment: Alignment.centerRight, child: Text('حالة تناول الدواء')),
       children: [
-        buildDialogOption('تم أخذ الدواء', Colors.green, context),
-        buildDialogOption('لم يتم أخذ الدواء', Colors.red, context),
-        buildDialogOption('تم التخطي', Colors.orange, context),
+        buildDialogOption('تم أخذ الدواء', Colors.green, context, 0, medicine),
+        buildDialogOption(
+            'لم يتم أخذ الدواء', Colors.red, context, 1, medicine),
+        buildDialogOption('تم التخطي', Colors.orange, context, 2, medicine),
       ],
     );
   }
 
-  SimpleDialogOption buildDialogOption(
-      String text, Color color, BuildContext context) {
+  SimpleDialogOption buildDialogOption(String text, Color color,
+      BuildContext context, int state, MedicineModel medicine) {
+    final bloc = context.read<MedicineBloc>();
+    final locator = GetIt.I.get<DBServices>();
+
     return SimpleDialogOption(
-      onPressed: () {
+      onPressed: () async {
+        switch (state) {
+          case 0:
+            {
+              final user_id = await locator.getCurrentUserId();
+              bloc.add(MedicineUpdated(
+                  medicine: MedicineModel(
+                      name: medicine.name,
+                      count: medicine.count,
+                      period: medicine.period,
+                      time: locator.time.toString(),
+                      userId: user_id,
+                      state: medicine.state = stateEnum.take),
+                  id: medicine.id!));
+            }
+
+          case 1:
+            {
+              final user_id = await locator.getCurrentUserId();
+              bloc.add(MedicineUpdated(
+                  medicine: MedicineModel(
+                      name: medicine.name,
+                      count: medicine.count,
+                      period: medicine.period,
+                      time: locator.time.toString(),
+                      userId: user_id,
+                      state: medicine.state = stateEnum.notYet),
+                  id: medicine.id!));
+            }
+          case 2:
+            {
+              final user_id = await locator.getCurrentUserId();
+              bloc.add(MedicineUpdated(
+                  medicine: MedicineModel(
+                      name: medicine.name,
+                      count: medicine.count,
+                      period: medicine.period,
+                      time: locator.time.toString(),
+                      userId: user_id,
+                      state: medicine.state = stateEnum.skip),
+                  id: medicine.id!));
+            }
+        }
         Navigator.pop(context, text);
       },
       child: Row(

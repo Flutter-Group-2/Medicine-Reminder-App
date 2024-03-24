@@ -112,20 +112,22 @@ class DBServices {
       'time': medicine.time!.substring(9, 15),
       "count": medicine.count,
       "piriod": medicine.period,
-      "name": medicine.name
+      "name": medicine.name,
+            'stats':medicine.state.toString()
+
     });
   }
 
   //update mediction
   Future upDateMediationData(MedicineModel medicine, String id) async {
     final usetID = await getCurrentUserId();
-
     await supabase.from('mediction').update({
       'user_id': usetID,
       'time': medicine.time!.substring(9, 15),
       'count': medicine.count,
       'piriod': medicine.period,
       'name': medicine.name,
+      'stats':medicine.state.toString()
     }).eq("id", id);
   }
 

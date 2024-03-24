@@ -39,16 +39,18 @@ class ContainerMedication extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Icon(Icons.circle,color: medicine.state==stateEnum.notYet? grey  : medicine.state==stateEnum.take? green:  medicine.state==stateEnum.skip? red:Colors.yellow,),
                   TextButton(
                     onPressed: () {
+                      print(medicine.state);
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return MedicineDialog();
+                          return MedicineDialog(medicine: medicine);
                         },
                       );
                     },
-                    child: Text('تنبيه الدواء',
+                    child: Text(medicine.state==stateEnum.notYet? "لم يتم اخذ الدواء بعد"  : medicine.state==stateEnum.skip? "تم تخطي موعد اخذ الدواء":  medicine.state==stateEnum.take?"تم اخذ الدواء في الموعد" :"تم إعادة الجدولة",
                     style: const TextStyle(
                         fontFamily: 'NotoSansArabic',
                         fontSize: 15,

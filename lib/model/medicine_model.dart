@@ -7,16 +7,21 @@ class MedicineModel {
   int? period;
   String? userId;
   String? id;
+  stateEnum? state;
 
-  MedicineModel({this.name, this.time, this.count, this.period, this.userId});
+  MedicineModel({this.name, this.time, this.count, this.period, this.userId,this.state=stateEnum.notYet});
 
   MedicineModel.fromJson(Map<String, dynamic> json) {
+    print(json['stats'].runtimeType);
     name = json['name'];
     time = json['time'];
     count = json['count'];
     period = json['period'];
     userId = json['user_id'];
     id = json['id'];
+
+    state = json['stats'].toString().contains("stateEnum.notYet")? stateEnum.notYet  : json['stats'].toString().contains("stateEnum.skip") ? stateEnum.skip:  json['stats'].toString().contains("stateEnum.take") ? stateEnum.take :stateEnum.reschedule;
+
   }
 
   Map<String, dynamic> toJson() {
@@ -26,7 +31,8 @@ class MedicineModel {
     data['count'] = count;
     data['period'] = period;
     data['user_id'] = userId;
-    data["id"] = id;
+    data['id'] = id;
+    data['state']=state;
     return data;
   }
 
@@ -60,3 +66,5 @@ class MedicineModel {
     return format.format(dateTime);
   }
 }
+
+enum stateEnum{skip,take,reschedule,notYet}

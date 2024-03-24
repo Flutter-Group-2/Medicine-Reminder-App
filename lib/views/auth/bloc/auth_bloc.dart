@@ -80,9 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final userId = await serviceLocator.getCurrentUserId();
       await serviceLocator.getUser(id: userId);
       emit(SessionAvailabilityState(isAvailable: sessionData));
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 
   FutureOr<void> logout(LogoutEvent event, Emitter<AuthState> emit) async {

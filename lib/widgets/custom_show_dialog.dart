@@ -2,18 +2,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:medicine_reminder_app/extensions/screen_handler.dart';
 import 'package:medicine_reminder_app/model/medicine_model.dart';
 import 'package:medicine_reminder_app/service/supabase_services.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
+import 'package:medicine_reminder_app/views/bottom_nav_bar/view/bottom_nav_bar.dart';
 import 'package:medicine_reminder_app/views/medicine/bloc/medicine_bloc.dart';
 
 class MedicineDialog extends StatelessWidget {
-  MedicineDialog({super.key, required this.medicine});
-  MedicineModel medicine;
+  const MedicineDialog({super.key, required this.medicine});
+  final MedicineModel medicine;
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: Align(
+      title: const Align(
           alignment: Alignment.centerRight, child: Text('حالة تناول الدواء')),
       children: [
         buildDialogOption('تم أخذ الدواء', Colors.green, context, 0, medicine),
@@ -44,6 +46,7 @@ class MedicineDialog extends StatelessWidget {
                       userId: user_id,
                       state: medicine.state = stateEnum.take),
                   id: medicine.id!));
+                  
             }
 
           case 1:
@@ -73,7 +76,7 @@ class MedicineDialog extends StatelessWidget {
                   id: medicine.id!));
             }
         }
-        Navigator.pop(context, text);
+        context.push(view: BottomNav(), isPush: false);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

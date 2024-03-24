@@ -39,10 +39,8 @@ class ContainerMedication extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Icon(Icons.circle,color: medicine.state==stateEnum.notYet? grey  : medicine.state==stateEnum.take? green:  medicine.state==stateEnum.skip? red:Colors.yellow,),
                   TextButton(
                     onPressed: () {
-                      print(medicine.state);
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
@@ -50,8 +48,15 @@ class ContainerMedication extends StatelessWidget {
                         },
                       );
                     },
-                    child: Text(medicine.state==stateEnum.notYet? "لم يتم اخذ الدواء بعد"  : medicine.state==stateEnum.skip? "تم تخطي موعد اخذ الدواء":  medicine.state==stateEnum.take?"تم اخذ الدواء في الموعد" :"تم إعادة الجدولة",
-                    style: const TextStyle(
+                    child: Text(
+                      medicine.state == stateEnum.notYet
+                          ? "لم يتم اخذ الدواء بعد"
+                          : medicine.state == stateEnum.skip
+                              ? "تم تخطي موعد اخذ الدواء"
+                              : medicine.state == stateEnum.take
+                                  ? "تم اخذ الدواء في الموعد"
+                                  : "تم إعادة الجدولة",
+                      style: const TextStyle(
                         fontFamily: 'NotoSansArabic',
                         fontSize: 15,
                         color: Color(0xff504E4E),
@@ -59,33 +64,48 @@ class ContainerMedication extends StatelessWidget {
                       ),
                     ),
                   ),
-                  width80,
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        medicine.name!, // Medicine Name
-                        style: const TextStyle(
-                            fontSize: 15,
-                            color: black,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            medicine
-                                .getTimeWithAmPm(medicine.time!), // Time zone
-                            style: const TextStyle(
-                              fontFamily: 'NotoSansArabic',
+                  Icon(
+                    Icons.circle,
+                    size: 10,
+                    color: medicine.state == stateEnum.notYet
+                        ? grey
+                        : medicine.state == stateEnum.take
+                            ? green
+                            : medicine.state == stateEnum.skip
+                                ? red
+                                : Colors.yellow,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          medicine.name!, // Medicine Name
+                          style: const TextStyle(
+                              overflow: TextOverflow.ellipsis,
                               fontSize: 15,
-                              color: Color(0xff504E4E),
-                              fontWeight: FontWeight.w500,
+                              color: black,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              medicine.getTimeWithAmPm(
+                                  medicine.time!), // Time zone
+                              style: const TextStyle(
+                                fontFamily: 'NotoSansArabic',
+                                fontSize: 15,
+                                color: Color(0xff504E4E),
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                          width4,
-                        ],
-                      ),
-                    ],
+                            width4,
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   SvgPicture.asset("assets/icons/drugs.svg"),
                 ],
@@ -113,51 +133,56 @@ class ContainerMedication extends StatelessWidget {
                     },
                     child: Image.asset('assets/images/edit.png')),
                 width120,
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      medicine.name!,
-                      style: const TextStyle(
-                          fontFamily: 'NotoSansArabic',
-                          fontSize: 15,
-                          color: black,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "تم",
-                          style: TextStyle(
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        medicine.name!,
+                        style: const TextStyle(
+                            overflow: TextOverflow.ellipsis,
                             fontFamily: 'NotoSansArabic',
                             fontSize: 15,
-                            color: Color(0xff504E4E),
-                            fontWeight: FontWeight.w500,
+                            color: black,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text(
+                            "تم",
+                            style: TextStyle(
+                              fontFamily: 'NotoSansArabic',
+                              fontSize: 15,
+                              color: Color(0xff504E4E),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        width4,
-                        const Text(
-                          "•",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xff504E4E),
-                            fontWeight: FontWeight.w500,
+                          width4,
+                          const Text(
+                            "•",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xff504E4E),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        width4,
-                        Text(
-                          medicine.getTimeWithAmPm(medicine.time!),
-                          style: const TextStyle(
-                            fontFamily: 'NotoSansArabic',
-                            fontSize: 15,
-                            color: Color(0xff504E4E),
-                            fontWeight: FontWeight.w500,
+                          width4,
+                          Text(
+                            medicine.getTimeWithAmPm(medicine.time!),
+                            style: const TextStyle(
+                              fontFamily: 'NotoSansArabic',
+                              fontSize: 15,
+                              color: Color(0xff504E4E),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        width4,
-                      ],
-                    ),
-                  ],
+                          width4,
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 SvgPicture.asset("assets/icons/drugs.svg"),
               ],

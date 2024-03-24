@@ -12,7 +12,7 @@ class MedicineModel {
   MedicineModel({this.name, this.time, this.count, this.period, this.userId,this.state=stateEnum.notYet});
 
   MedicineModel.fromJson(Map<String, dynamic> json) {
-    print(json['stats'].runtimeType);
+    json['stats'];
     name = json['name'];
     time = json['time'];
     count = json['count'];

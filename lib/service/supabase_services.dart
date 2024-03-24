@@ -32,7 +32,6 @@ class DBServices {
   Future getUser({required String id}) async {
     var userInfo =
         await supabase.from('user').select('*').match({'id': id}).single();
-    print(userInfo);
     nameUser = userInfo['username'];
   }
 

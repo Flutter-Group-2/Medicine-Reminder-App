@@ -7,6 +7,7 @@ import 'package:medicine_reminder_app/utils/colors.dart';
 import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/medicine/bloc/medicine_bloc.dart';
 import 'package:medicine_reminder_app/widgets/custom_container_medican.dart';
+import 'package:medicine_reminder_app/widgets/custom_shimmer_effact.dart';
 
 class MedicineView extends StatelessWidget {
   const MedicineView({super.key});
@@ -40,12 +41,11 @@ class MedicineView extends StatelessWidget {
                   }
                 }, builder: (context, state) {
                   if (state is MedicineLoadingState) {
-                    return const Center(child: CircularProgressIndicator());
+                    return shimmerEffect();
                   }
                   if (state is MedicineLoadedState) {
                     if (state.list.isNotEmpty) {
-                      return SizedBox(
-                        height: context.getHeight()*0.7,
+                      return Expanded(
                         child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: state.list.length,
@@ -71,17 +71,16 @@ class MedicineView extends StatelessWidget {
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          height: 50,
-                          width: 50,
-                          child:
-                          Column(children: [
-                              Image.asset(
-                            "assets/images/arrowdown.png",
-                            fit: BoxFit.contain,
-                          ),
-                          ],)
-                         
-                        ),
+                            height: 50,
+                            width: 50,
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  "assets/images/arrowdown.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ],
+                            )),
                       ],
                     ),
                   );

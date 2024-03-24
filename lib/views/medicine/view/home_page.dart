@@ -8,6 +8,7 @@ import 'package:medicine_reminder_app/utils/spacing.dart';
 import 'package:medicine_reminder_app/views/medicine/bloc/medicine_bloc.dart';
 import 'package:medicine_reminder_app/widgets/custom_container_medican.dart';
 import 'package:medicine_reminder_app/widgets/custom_header_page.dart';
+import 'package:medicine_reminder_app/widgets/custom_shimmer_effact.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -49,12 +50,11 @@ class HomeView extends StatelessWidget {
                   },
                   builder: (context, state) {
                     if (state is MedicineLoadingState) {
-                      return const Center(child: CircularProgressIndicator());
+                      return shimmerEffect();
                     }
                     if (state is MedicineLoadedState) {
                       if (state.list.isNotEmpty) {
-                        return SizedBox(
-                          height: context.getHeight() * 0.7,
+                        return Expanded(
                           child: ListView.builder(
                               scrollDirection: Axis.vertical,
                               shrinkWrap: true,

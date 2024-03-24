@@ -53,6 +53,7 @@ class HomeView extends StatelessWidget {
                     }
                     if (state is MedicineLoadedState) {
                       if (state.list.isNotEmpty) {
+<<<<<<< HEAD
                         return ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
@@ -63,6 +64,21 @@ class HomeView extends StatelessWidget {
                                 isShowState: true
                               );
                             });
+=======
+                        return SizedBox(
+                          height: context.getHeight() * 0.7,
+                          child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: state.list.length,
+                              itemBuilder: (context, index) {
+                                return ContainerMedication(
+                                  medicine: state.list[index],
+                                  isShowState: true,
+                                );
+                              }),
+                        );
+>>>>>>> 7a2b48c94058b37cd026e7227645028aa0e0fd48
                       }
                     }
                     return Column(

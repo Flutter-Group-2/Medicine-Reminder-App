@@ -22,7 +22,6 @@ class MedicineModel {
 
     state = json['stats'].toString().contains("stateEnum.notYet")? stateEnum.notYet  : json['stats'].toString().contains("stateEnum.skip") ? stateEnum.skip:  json['stats'].toString().contains("stateEnum.take") ? stateEnum.take :stateEnum.reschedule;
 
-
   }
 
   Map<String, dynamic> toJson() {

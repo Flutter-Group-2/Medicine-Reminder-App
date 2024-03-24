@@ -37,7 +37,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(AuthSuccessState(
             msg:
-                "تم إكمال عملية التسجيل بنجاح، يرجى تأكيد بريدك الإلكتروني قبل تسجيل الدخول"));
+                "تم إكمال عملية التسجيل بنجاح"));
       } on AuthException catch (e) {
         emit(AuthErrorState(
             msg:
